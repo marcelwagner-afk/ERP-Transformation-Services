@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#0A1A29">
+  <title>TIMETOACT GROUP - ERP Transformation Advisory</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%230A1A29' width='100' height='100' rx='15'/><text x='50' y='68' font-size='45' text-anchor='middle' fill='%23DA5500' font-family='sans-serif' font-weight='bold'>TTA</text></svg>">
+  <style>
+    /* =====================================================
+       TIMETOACT GROUP Corporate Design TGG 2025
+       ===================================================== */
+    :root {
+      --tta-dark: #0A1A29;
+      --tta-white: #FFFFFF;
+      --tta-gray-light: #F2F2F2;
+      --tta-blue-light: #7CC2FA;
+      --tta-orange: #DA5500;
+      --tta-teal: #098F9B;
+      --tta-blue: #205EA7;
+      --tta-teal-dark: #006B76;
+      --tta-blue-dark: #064A80;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+      background: var(--tta-dark);
+      color: var(--tta-white);
+      min-height: 100vh;
+      line-height: 1.5;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in { animation: fadeIn 0.3s ease-out; }
+
+    h1, h2, h3, h4 {
+      font-family: 'Segoe UI Semibold', 'Segoe UI', Arial, sans-serif;
+      font-weight: 600;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 16px;
+    }
+
+    /* Header */
+    .header {
+      padding: 30px 20px 20px;
+      text-align: center;
+    }
+
+    .logo-text {
+      font-size: 11px;
+      letter-spacing: 3px;
+      color: var(--tta-white);
+      opacity: 0.7;
+      margin-bottom: 4px;
+    }
+
+    .logo-main {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: var(--tta-white);
+    }
+
+    .logo-main span { color: var(--tta-orange); }
+
+    .tagline {
+      margin-top: 16px;
+      font-size: 13px;
+      color: var(--tta-white);
+      opacity: 0.9;
+    }
+
+    .tagline-highlight {
+      display: inline-block;
+      margin-top: 8px;
+    }
+
+    .tagline-highlight span {
+      font-weight: 600;
+      margin: 0 4px;
+      color: var(--tta-orange);
+    }
+
+    /* Main Card */
+    .main-card {
+      background: var(--tta-white);
+      border-radius: 16px;
+      padding: 24px;
+      margin: 20px auto;
+      max-width: 700px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+
+    .card-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--tta-dark);
+      text-align: center;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid var(--tta-gray-light);
+    }
+
+    .section-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--tta-dark);
+      margin: 20px 0 12px;
+      padding-top: 16px;
+      border-top: 2px solid var(--tta-gray-light);
+    }
+
+    /* Navigation Buttons */
+    .button-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .nav-button {
+      background: var(--tta-dark);
+      border: none;
+      border-radius: 10px;
+      padding: 14px 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: center;
+    }
+
+    .nav-button:hover {
+      background: var(--tta-blue-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(10, 26, 41, 0.4);
+    }
+
+    .nav-button:active { transform: scale(0.98); }
+
+    .nav-button-title {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--tta-white);
+      margin-bottom: 4px;
+    }
+
+    .nav-button-subtitle {
+      font-size: 9px;
+      color: var(--tta-blue-light);
+      opacity: 0.8;
+    }
+
+    .nav-button-cta {
+      font-size: 9px;
+      color: var(--tta-orange);
+      margin-top: 6px;
+      font-weight: 600;
+    }
+
+    /* Topic Grid */
+    .topic-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+    }
+
+    @media (min-width: 500px) { .topic-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (min-width: 700px) { .topic-grid { grid-template-columns: repeat(4, 1fr); } }
+
+    .topic-button {
+      background: rgba(124, 194, 250, 0.1);
+      border: 1px solid rgba(124, 194, 250, 0.3);
+      border-left: 3px solid var(--tta-teal);
+      border-radius: 8px;
+      padding: 12px 10px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: left;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--tta-white);
+    }
+
+    .topic-button:hover {
+      background: rgba(124, 194, 250, 0.2);
+      border-color: var(--tta-blue-light);
+      transform: translateX(3px);
+    }
+
+    .topic-button:active { transform: scale(0.98); }
+
+    /* Page Content */
+    .page-content {
+      background: var(--tta-dark);
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .page-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .page-header {
+      background: linear-gradient(135deg, var(--tta-teal) 0%, var(--tta-teal-dark) 100%);
+      color: var(--tta-white);
+      padding: 20px 24px;
+      border-radius: 12px;
+      margin-bottom: 16px;
+    }
+
+    .page-header h1 {
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    /* Back Button */
+    .back-button {
+      background: var(--tta-orange);
+      color: var(--tta-white);
+      border: none;
+      border-radius: 8px;
+      padding: 12px 24px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      margin-top: 16px;
+    }
+
+    .back-button:hover {
+      background: #C44D00;
+      transform: translateY(-1px);
+    }
+
+    .back-button:active { transform: scale(0.98); }
+
+    /* Detail View */
+    .detail-card {
+      background: var(--tta-white);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 16px;
+    }
+
+    .detail-header {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--tta-dark);
+      padding-bottom: 12px;
+      margin-bottom: 16px;
+      border-bottom: 3px solid var(--tta-teal);
+    }
+
+    .detail-label {
+      font-size: 11px;
+      color: var(--tta-teal);
+      font-weight: 600;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .detail-text {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--tta-dark);
+      white-space: pre-line;
+    }
+
+    /* Breadcrumb */
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 12px;
+      font-size: 11px;
+      color: rgba(255,255,255,0.6);
+    }
+
+    .breadcrumb-link {
+      color: var(--tta-blue-light);
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    .breadcrumb-link:hover { color: var(--tta-white); }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 30px 20px;
+      color: rgba(255,255,255,0.5);
+      font-size: 11px;
+    }
+
+    .footer-tagline {
+      color: var(--tta-white);
+      font-size: 12px;
+      margin-bottom: 8px;
+    }
+
+    .footer-tagline span {
+      color: var(--tta-orange);
+      font-weight: 600;
+    }
+
+    /* Christmas Banner */
+    .christmas-banner {
+      background: linear-gradient(90deg, var(--tta-teal-dark) 0%, var(--tta-teal) 50%, var(--tta-teal-dark) 100%);
+      color: var(--tta-white);
+      text-align: center;
+      padding: 10px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+
+  <script>
+    // =====================================================
+    // TIMETOACT GROUP - ERP Transformation Advisory
+    // Corporate Design TGG 2025
+    // =====================================================
+
+    const detailContent = {
+      // === STRATEGIE & ASSESSMENT ===
+      "erp-strategie": {
+        title: "ERP-Strategie & Vision",
+        content: `Eine klare ERP-Strategie ist der Grundstein jeder erfolgreichen Transformation. Timetoact Group unterstützt Sie bei der Entwicklung einer zukunftsfähigen ERP-Vision.
+
+Unsere Leistungen:
+• Analyse der aktuellen IT- und Geschäftsstrategie
+• Definition der ERP-Zielvision und -Roadmap
+• Bewertung von Cloud- vs. On-Premise-Strategien
+• Alignment von Business und IT
+• Total Cost of Ownership (TCO) Analyse
+• Return on Investment (ROI) Berechnung
+
+Timetoact Group erarbeitet mit Ihnen eine maßgeschneiderte ERP-Strategie, die Ihre Unternehmensziele optimal unterstützt.`
+      },
+      "systemauswahl": {
+        title: "ERP-Systemauswahl",
+        content: `Die Wahl des richtigen ERP-Systems ist entscheidend für Ihren langfristigen Erfolg. Timetoact Group begleitet Sie neutral und herstellerunabhängig durch den Auswahlprozess.
+
+Unser Vorgehen:
+• Anforderungsanalyse und Lastenheft-Erstellung
+• Marktanalyse und Longlist-Erstellung
+• Strukturierte Anbieterbewertung
+• Proof of Concept (PoC) Begleitung
+• Vertragsverhandlung und Lizenzoptimierung
+• Entscheidungsvorlage für das Management
+
+Wir unterstützen Sie bei der Auswahl aus allen führenden ERP-Systemen: SAP, Microsoft Dynamics, Oracle, Infor, und weiteren.`
+      },
+      "readiness-assessment": {
+        title: "Readiness Assessment",
+        content: `Wie bereit ist Ihr Unternehmen für eine ERP-Transformation? Das Readiness Assessment gibt Ihnen eine fundierte Entscheidungsgrundlage.
+
+Assessment-Bereiche:
+• Technische Readiness (Systemlandschaft, Infrastruktur)
+• Organisatorische Readiness (Change-Fähigkeit, Ressourcen)
+• Prozess-Readiness (Standardisierungsgrad, Dokumentation)
+• Daten-Readiness (Datenqualität, Stammdaten)
+• Budget- und Zeitrahmen-Realismus
+
+Timetoact Group liefert Ihnen einen detaillierten Readiness-Report mit konkreten Handlungsempfehlungen und einer realistischen Projektplanung.`
+      },
+      "business-case": {
+        title: "Business Case & ROI",
+        content: `Ein überzeugender Business Case ist die Basis für die Freigabe Ihres ERP-Projekts. Timetoact Group unterstützt Sie bei der Erstellung einer fundierten Wirtschaftlichkeitsbetrachtung.
+
+Inhalte des Business Case:
+• Ist-Kosten-Analyse (aktuelle Systemlandschaft)
+• Investitionskosten der Transformation
+• Laufende Betriebskosten (Run-Kosten)
+• Quantifizierbare Benefits und Einsparungen
+• Qualitative Nutzenargumente
+• Risikobewertung und Sensitivitätsanalyse
+• Amortisationsrechnung
+
+Wir liefern Ihnen einen Management-tauglichen Business Case mit klaren Entscheidungsgrundlagen.`
+      },
+      "prozessanalyse": {
+        title: "Prozessanalyse & Optimierung",
+        content: `Eine ERP-Transformation ist die ideale Gelegenheit, Ihre Geschäftsprozesse zu optimieren. Timetoact Group analysiert Ihre Prozesse und identifiziert Verbesserungspotenziale.
+
+Unser Vorgehen:
+• Ist-Prozessaufnahme und -dokumentation
+• Identifikation von Ineffizienzen und Medienbrüchen
+• Benchmarking gegen Best Practices
+• Soll-Prozessdesign
+• Fit-Gap-Analyse zum ERP-Standard
+• Prozess-KPIs definieren
+
+Das Ergebnis: Optimierte Prozesse, die Ihr neues ERP-System optimal nutzen.`
+      },
+      "vendor-management": {
+        title: "Vendor Management",
+        content: `Die Zusammenarbeit mit ERP-Anbietern und Implementierungspartnern erfordert professionelles Management. Timetoact Group steht auf Ihrer Seite.
+
+Unsere Leistungen:
+• Ausschreibung und Angebotsvergleich
+• Vertragsverhandlung und -prüfung
+• Lizenzoptimierung und -audit
+• Steuerung der Implementierungspartner
+• Qualitätssicherung und Eskalationsmanagement
+• Claim Management bei Abweichungen
+
+Als unabhängiger Berater vertreten wir ausschließlich Ihre Interessen gegenüber Anbietern und Partnern.`
+      },
+
+      // === MIGRATIONSSZENARIEN ===
+      "greenfield": {
+        title: "Greenfield-Implementierung",
+        content: `Bei einer Greenfield-Implementierung starten Sie auf der grünen Wiese mit einem komplett neuen ERP-System.
+
+Vorteile:
+• Nutzung modernster Best Practices
+• Keine Altlasten aus dem Legacy-System
+• Optimale Prozessgestaltung möglich
+• Saubere Datenstrukturen von Beginn an
+
+Herausforderungen:
+• Höherer initialer Aufwand
+• Komplette Datenmigration erforderlich
+• Umfangreiches Change Management nötig
+
+Timetoact Group begleitet Sie durch alle Phasen der Greenfield-Implementierung – von der Konzeption bis zum Go-Live.`
+      },
+      "brownfield": {
+        title: "Brownfield / System Conversion",
+        content: `Bei einer Brownfield-Migration wird das bestehende System in die neue ERP-Version konvertiert. Historische Daten und Anpassungen bleiben erhalten.
+
+Vorteile:
+• Bewahrung historischer Daten
+• Geringerer Datenmigrations-Aufwand
+• Kontinuität für die Anwender
+• Kürzere Projektlaufzeit möglich
+
+Herausforderungen:
+• Technische Komplexität der Konvertierung
+• Legacy-Anpassungen müssen geprüft werden
+• Altlasten werden übernommen
+
+Timetoact Group analysiert Ihre Ausgangssituation und führt Sie sicher durch den Konvertierungsprozess.`
+      },
+      "hybrid-migration": {
+        title: "Hybrid / Selective Data Migration",
+        content: `Der hybride Ansatz kombiniert die Vorteile von Greenfield und Brownfield durch selektive Datenübernahme.
+
+Charakteristika:
+• Neues System mit sauberen Strukturen
+• Selektive Übernahme relevanter Daten
+• Historische Daten nur wo nötig
+• Flexibilität bei der Prozessgestaltung
+
+Anwendungsfälle:
+• Unternehmenskonsolidierungen
+• Carve-Outs und Merger
+• Legacy-Systemablösung mit Datenreduktion
+
+Timetoact Group entwickelt mit Ihnen die optimale Migrationsstrategie für Ihre spezifische Situation.`
+      },
+      "carve-out": {
+        title: "Carve-Out & Merger",
+        content: `Bei Unternehmensverkäufen, Ausgliederungen oder Fusionen sind komplexe ERP-Transformationen erforderlich.
+
+Carve-Out Szenarien:
+• Ausgliederung eines Geschäftsbereichs
+• Verkauf einer Tochtergesellschaft
+• Spin-Off einer Business Unit
+
+Merger Szenarien:
+• Integration übernommener Unternehmen
+• Zusammenführung von ERP-Landschaften
+• Harmonisierung von Prozessen und Stammdaten
+
+Timetoact Group unterstützt Sie bei der Planung und Durchführung komplexer Carve-Out- und Merger-Projekte mit ERP-Transformation.`
+      },
+
+      // === PROJEKTMANAGEMENT ===
+      "methodik": {
+        title: "Methodik & Vorgehensmodell",
+        content: `Timetoact Group nutzt bewährte Vorgehensmodelle und passt diese an Ihre Projektsituation an.
+
+Unterstützte Methodiken:
+• SAP Activate
+• Microsoft Sure Step
+• Agile/Scrum für ERP
+• Hybride Ansätze (Wagile)
+• PRINCE2 / PMI
+
+Projektphasen:
+• Discover / Prepare
+• Explore / Design
+• Realize / Build
+• Deploy / Go-Live
+• Run / Optimize
+
+Wir kombinieren methodische Strenge mit pragmatischer Flexibilität für Ihren Projekterfolg.`
+      },
+      "projektsteuerung": {
+        title: "Projektsteuerung & PMO",
+        content: `Professionelle Projektsteuerung ist der Schlüssel zum Erfolg komplexer ERP-Transformationen. Timetoact Group übernimmt die Rolle des Project Management Office (PMO).
+
+PMO-Leistungen:
+• Projektplanung und -controlling
+• Ressourcenmanagement
+• Risiko- und Issue-Management
+• Stakeholder-Management
+• Qualitätssicherung
+• Reporting und Kommunikation
+• Steering Committee Unterstützung
+
+Wir sorgen für Transparenz, Kontrolle und zielgerichtete Entscheidungsfindung in Ihrem ERP-Projekt.`
+      },
+      "quality-gates": {
+        title: "Quality Gates & Reviews",
+        content: `Strukturierte Quality Gates sichern die Qualität und minimieren Risiken in Ihrem ERP-Projekt.
+
+Quality Gate Bereiche:
+• Konzept-Reviews
+• Design-Validierung
+• Build-Qualität
+• Test-Readiness
+• Go-Live-Readiness
+• Hypercare-Abschluss
+
+Timetoact Group definiert mit Ihnen passende Quality Gates, führt unabhängige Reviews durch und gibt ehrliches Feedback zum Projektstatus.`
+      },
+      "risikomanagement": {
+        title: "Risikomanagement",
+        content: `ERP-Transformationen bergen signifikante Risiken. Proaktives Risikomanagement ist essenziell.
+
+Typische Risikobereiche:
+• Scope Creep und Budgetüberschreitung
+• Zeitverzögerungen
+• Ressourcenengpässe
+• Technische Komplexität
+• Change Resistance
+• Datenqualitätsprobleme
+• Integrationsprobleme
+
+Timetoact Group implementiert ein strukturiertes Risikomanagement mit Früherkennung, Bewertung und Mitigationsmaßnahmen.`
+      },
+
+      // === TECHNISCHE THEMEN ===
+      "architektur": {
+        title: "ERP-Architektur & Landschaft",
+        content: `Eine zukunftsfähige ERP-Architektur ist die Basis für Flexibilität und Skalierbarkeit.
+
+Architektur-Aspekte:
+• Cloud vs. On-Premise vs. Hybrid
+• Single-Instance vs. Multi-Instance
+• Integration Architecture (API, Middleware)
+• Microservices und Erweiterungen
+• Datenarchitektur und Analytics
+
+Timetoact Group entwickelt mit Ihnen eine ERP-Zielarchitektur, die Ihre Geschäftsanforderungen heute und in Zukunft optimal unterstützt.`
+      },
+      "integration": {
+        title: "Systemintegration",
+        content: `ERP-Systeme sind das Herzstück Ihrer IT-Landschaft und müssen nahtlos mit Umsystemen integriert werden.
+
+Integrationsbereiche:
+• CRM-Systeme
+• E-Commerce-Plattformen
+• Produktionssteuerung (MES)
+• Logistik und Warehouse Management
+• Business Intelligence und Analytics
+• HR-Systeme
+• Banken und Zahlungsverkehr
+
+Timetoact Group analysiert Ihre Integrationsanforderungen und designt eine zukunftssichere Integrationsarchitektur.`
+      },
+      "datenmigration": {
+        title: "Datenmigration",
+        content: `Die Datenmigration ist oft der kritischste Teil einer ERP-Transformation. Timetoact Group hat einen bewährten Best-Practice-Ansatz entwickelt.
+
+Migrationsschritte:
+• Datenanalyse und Profiling
+• Mapping Quell- zu Zielsystem
+• Datenbereinigung (Cleansing)
+• Transformationsregeln definieren
+• Testmigrationen durchführen
+• Produktivmigration und Validierung
+
+Werkzeuge:
+• ETL-Tools
+• Migrations-Cockpits der ERP-Anbieter
+• Custom Migration Tools
+
+Wir stellen sicher, dass Ihre Daten vollständig und korrekt im neuen System ankommen.`
+      },
+      "schnittstellen": {
+        title: "Schnittstellen & APIs",
+        content: `Moderne ERP-Systeme kommunizieren über standardisierte Schnittstellen und APIs mit ihrer Umgebung.
+
+Schnittstellentypen:
+• REST APIs
+• OData Services
+• IDocs und EDI
+• File-basierte Schnittstellen
+• Event-basierte Integration
+• Middleware (SAP PI/PO, Azure Integration)
+
+Timetoact Group dokumentiert Ihre Schnittstellenanforderungen, designt die Zielarchitektur und begleitet die Implementierung.`
+      },
+      "custom-development": {
+        title: "Eigenentwicklungen & Add-Ons",
+        content: `Legacy-Systeme enthalten oft umfangreiche Eigenentwicklungen. Bei der Transformation müssen diese bewertet und behandelt werden.
+
+Unser Vorgehen:
+• Inventarisierung aller Eigenentwicklungen
+• Nutzungsanalyse (wird es noch gebraucht?)
+• Fit-Gap-Analyse zum neuen Standard
+• Entscheidung: Ablösen, Migrieren, Neu entwickeln
+• Code-Analyse und Anpassung
+
+Timetoact Group hilft Ihnen, den Umfang der Eigenentwicklungen zu reduzieren und auf den Standard zu setzen, wo möglich.`
+      },
+
+      // === CHANGE & TRAINING ===
+      "change-management": {
+        title: "Change Management",
+        content: `Menschen machen den Unterschied – erfolgreiches Change Management ist entscheidend für die Akzeptanz Ihres neuen ERP-Systems.
+
+Change Management Elemente:
+• Stakeholder-Analyse und -Management
+• Kommunikationsstrategie und -plan
+• Change Impact Assessment
+• Change Agent Netzwerk
+• Widerstandsmanagement
+• Kultureller Wandel begleiten
+
+Timetoact Group unterstützt Sie dabei, Ihre Organisation auf die Veränderung vorzubereiten und mitzunehmen.`
+      },
+      "training": {
+        title: "Training & Enablement",
+        content: `Gut geschulte Anwender sind der Schlüssel zur produktiven Nutzung Ihres neuen ERP-Systems.
+
+Trainingskonzept:
+• Zielgruppenspezifische Curricula
+• Train-the-Trainer Ansatz
+• E-Learning und Blended Learning
+• Hands-on Workshops
+• Dokumentation und Quick Guides
+• Go-Live Begleitung (Floor Walking)
+
+Timetoact Group entwickelt und implementiert ein maßgeschneidertes Trainingskonzept für Ihre ERP-Transformation.`
+      },
+      "user-adoption": {
+        title: "User Adoption",
+        content: `Die beste ERP-Lösung nützt nichts, wenn sie nicht genutzt wird. User Adoption muss aktiv gefördert werden.
+
+Adoption-Maßnahmen:
+• Frühzeitige Einbindung der Key User
+• Intuitive UX-Gestaltung
+• Kontinuierliche Feedback-Schleifen
+• Gamification und Incentives
+• Adoption Monitoring und KPIs
+• Nachschulungen und Refresher
+
+Timetoact Group misst und optimiert die User Adoption, um den ROI Ihrer ERP-Investition zu maximieren.`
+      },
+
+      // === BETRIEB & OPTIMIERUNG ===
+      "hypercare": {
+        title: "Hypercare & Go-Live Support",
+        content: `Die Phase direkt nach dem Go-Live ist kritisch. Intensiver Support sichert einen stabilen Betrieb.
+
+Hypercare-Leistungen:
+• Vor-Ort-Support an den Standorten
+• Erweitertes Incident Management
+• Schnelle Problemlösung
+• Performance Monitoring
+• Anwenderunterstützung
+• Dokumentation von Lessons Learned
+
+Timetoact Group stellt sicher, dass Ihr Go-Live erfolgreich verläuft und der Übergang in den Regelbetrieb reibungslos gelingt.`
+      },
+      "application-management": {
+        title: "Application Management",
+        content: `Nach dem Go-Live beginnt der Regelbetrieb. Professionelles Application Management sichert den nachhaltigen Erfolg.
+
+AMS-Leistungen:
+• 1st, 2nd und 3rd Level Support
+• Incident und Problem Management
+• Change Request Management
+• Release Management
+• Systemüberwachung und Monitoring
+• Kontinuierliche Verbesserung
+
+Timetoact Group bietet flexible Application Management Services für alle führenden ERP-Systeme.`
+      },
+      "optimierung": {
+        title: "Kontinuierliche Optimierung",
+        content: `Ein ERP-System ist nie "fertig". Kontinuierliche Optimierung sichert den langfristigen Nutzen.
+
+Optimierungsbereiche:
+• Prozessoptimierung basierend auf Nutzungsdaten
+• Neue Funktionen und Features aktivieren
+• Performance-Optimierung
+• Automatisierungspotenziale heben
+• Reporting und Analytics verbessern
+• Anwenderzufriedenheit steigern
+
+Timetoact Group unterstützt Sie bei der kontinuierlichen Weiterentwicklung Ihrer ERP-Lösung.`
+      },
+
+      // === TESTING ===
+      "teststrategie": {
+        title: "Teststrategie",
+        content: `Eine durchdachte Teststrategie ist fundamental für die Qualitätssicherung Ihrer ERP-Transformation.
+
+Testarten:
+• Unit Tests
+• Integrationstests
+• End-to-End Tests
+• User Acceptance Tests (UAT)
+• Performance Tests
+• Regressionstests
+• Cutover Tests
+
+Timetoact Group entwickelt mit Ihnen eine risikoorientierte Teststrategie, die Qualität effizient sicherstellt.`
+      },
+      "testautomatisierung": {
+        title: "Testautomatisierung",
+        content: `Automatisierte Tests erhöhen die Testabdeckung und reduzieren den manuellen Aufwand, insbesondere für Regressionstests.
+
+Automatisierungsansätze:
+• Record & Playback
+• Keyword-Driven Testing
+• Data-Driven Testing
+• API-Testing
+
+Tools:
+• SAP Solution Manager / Cloud ALM
+• Tricentis Tosca
+• Worksoft
+• Selenium / UI-Automatisierung
+
+Timetoact Group hilft Ihnen, den optimalen Automatisierungsgrad für Ihre Testlandschaft zu erreichen.`
+      },
+
+      // === COMPLIANCE & SECURITY ===
+      "berechtigungen": {
+        title: "Berechtigungskonzept",
+        content: `Ein sauberes Berechtigungskonzept ist essenziell für Compliance und Sicherheit in Ihrem ERP-System.
+
+Konzeptelemente:
+• Rollen- und Berechtigungsdesign
+• Segregation of Duties (SoD)
+• Compliance-Regelwerke
+• Genehmigungsworkflows
+• Rezertifizierungsprozesse
+• Audit-Trails und Logging
+
+Timetoact Group entwickelt ein Berechtigungskonzept, das Sicherheit und Usability optimal balanciert.`
+      },
+      "compliance": {
+        title: "Compliance & Audit",
+        content: `ERP-Systeme müssen vielfältige Compliance-Anforderungen erfüllen. Timetoact Group unterstützt Sie bei der Einhaltung.
+
+Compliance-Bereiche:
+• Rechnungslegung (HGB, IFRS)
+• Steuerrecht (GoBD, E-Rechnung)
+• Datenschutz (DSGVO)
+• Branchenspezifisch (FDA, GxP, SOX)
+• IT-Sicherheit (ISO 27001)
+• Interne Kontrollsysteme (IKS)
+
+Wir stellen sicher, dass Ihre ERP-Transformation alle relevanten Compliance-Anforderungen berücksichtigt.`
+      },
+
+      // === CLOUD & INNOVATION ===
+      "cloud-strategie": {
+        title: "Cloud-Strategie",
+        content: `Cloud-basierte ERP-Lösungen gewinnen zunehmend an Bedeutung. Die richtige Cloud-Strategie ist entscheidend.
+
+Cloud-Modelle:
+• Public Cloud (SaaS)
+• Private Cloud
+• Hybrid Cloud
+• Multi-Cloud
+
+Bewertungskriterien:
+• Total Cost of Ownership
+• Flexibilität und Skalierbarkeit
+• Datensouveränität
+• Integrationsfähigkeit
+• Innovationsgeschwindigkeit
+
+Timetoact Group entwickelt mit Ihnen eine Cloud-Strategie, die zu Ihrem Unternehmen passt.`
+      },
+      "innovation": {
+        title: "Innovation & Emerging Technologies",
+        content: `Moderne ERP-Systeme bieten Zugang zu innovativen Technologien, die Ihr Geschäft transformieren können.
+
+Technologien:
+• Künstliche Intelligenz und Machine Learning
+• Robotic Process Automation (RPA)
+• Internet of Things (IoT)
+• Advanced Analytics und Predictive
+• Blockchain
+• Low-Code / No-Code Erweiterungen
+
+Timetoact Group hilft Ihnen, die relevanten Innovationen zu identifizieren und in Ihre ERP-Strategie zu integrieren.`
+      }
+    };
+
+    const topicLists = {
+      vorprojekte: [
+        { id: "erp-strategie", label: "ERP-Strategie & Vision" },
+        { id: "systemauswahl", label: "ERP-Systemauswahl" },
+        { id: "readiness-assessment", label: "Readiness Assessment" },
+        { id: "business-case", label: "Business Case & ROI" },
+        { id: "prozessanalyse", label: "Prozessanalyse & Optimierung" },
+        { id: "vendor-management", label: "Vendor Management" },
+        { id: "architektur", label: "ERP-Architektur & Landschaft" },
+        { id: "cloud-strategie", label: "Cloud-Strategie" }
+      ],
+      vorstudie: [
+        { id: "readiness-assessment", label: "Readiness Assessment" },
+        { id: "prozessanalyse", label: "Prozessanalyse" },
+        { id: "business-case", label: "Business Case & ROI" },
+        { id: "systemauswahl", label: "ERP-Systemauswahl" },
+        { id: "architektur", label: "ERP-Architektur" },
+        { id: "integration", label: "Systemintegration" },
+        { id: "datenmigration", label: "Datenmigration" },
+        { id: "methodik", label: "Methodik & Vorgehensmodell" }
+      ],
+      greenfield: [
+        { id: "greenfield", label: "Greenfield-Implementierung" },
+        { id: "erp-strategie", label: "ERP-Strategie & Vision" },
+        { id: "methodik", label: "Methodik & Vorgehensmodell" },
+        { id: "prozessanalyse", label: "Prozessanalyse & Optimierung" },
+        { id: "architektur", label: "ERP-Architektur" },
+        { id: "datenmigration", label: "Datenmigration" },
+        { id: "integration", label: "Systemintegration" },
+        { id: "schnittstellen", label: "Schnittstellen & APIs" },
+        { id: "berechtigungen", label: "Berechtigungskonzept" },
+        { id: "change-management", label: "Change Management" },
+        { id: "training", label: "Training & Enablement" },
+        { id: "teststrategie", label: "Teststrategie" },
+        { id: "hypercare", label: "Hypercare & Go-Live" }
+      ],
+      brownfield: [
+        { id: "brownfield", label: "Brownfield / System Conversion" },
+        { id: "readiness-assessment", label: "Readiness Assessment" },
+        { id: "custom-development", label: "Eigenentwicklungen & Add-Ons" },
+        { id: "datenmigration", label: "Datenmigration" },
+        { id: "schnittstellen", label: "Schnittstellen & APIs" },
+        { id: "integration", label: "Systemintegration" },
+        { id: "berechtigungen", label: "Berechtigungskonzept" },
+        { id: "teststrategie", label: "Teststrategie" },
+        { id: "testautomatisierung", label: "Testautomatisierung" },
+        { id: "change-management", label: "Change Management" },
+        { id: "training", label: "Training & Enablement" },
+        { id: "hypercare", label: "Hypercare & Go-Live" }
+      ],
+      mixed: [
+        { id: "hybrid-migration", label: "Hybrid / Selective Data Migration" },
+        { id: "carve-out", label: "Carve-Out & Merger" },
+        { id: "erp-strategie", label: "ERP-Strategie" },
+        { id: "architektur", label: "ERP-Architektur" },
+        { id: "prozessanalyse", label: "Prozessanalyse" },
+        { id: "datenmigration", label: "Datenmigration" },
+        { id: "integration", label: "Systemintegration" },
+        { id: "custom-development", label: "Eigenentwicklungen" },
+        { id: "berechtigungen", label: "Berechtigungskonzept" },
+        { id: "change-management", label: "Change Management" },
+        { id: "training", label: "Training & Enablement" },
+        { id: "teststrategie", label: "Teststrategie" },
+        { id: "hypercare", label: "Hypercare & Go-Live" }
+      ],
+      themenradar: [
+        { id: "erp-strategie", label: "ERP-Strategie & Vision" },
+        { id: "systemauswahl", label: "ERP-Systemauswahl" },
+        { id: "readiness-assessment", label: "Readiness Assessment" },
+        { id: "business-case", label: "Business Case & ROI" },
+        { id: "prozessanalyse", label: "Prozessanalyse & Optimierung" },
+        { id: "vendor-management", label: "Vendor Management" },
+        { id: "methodik", label: "Methodik & Vorgehensmodell" },
+        { id: "projektsteuerung", label: "Projektsteuerung & PMO" },
+        { id: "quality-gates", label: "Quality Gates & Reviews" },
+        { id: "risikomanagement", label: "Risikomanagement" },
+        { id: "architektur", label: "ERP-Architektur & Landschaft" },
+        { id: "integration", label: "Systemintegration" },
+        { id: "datenmigration", label: "Datenmigration" },
+        { id: "schnittstellen", label: "Schnittstellen & APIs" },
+        { id: "custom-development", label: "Eigenentwicklungen & Add-Ons" },
+        { id: "change-management", label: "Change Management" },
+        { id: "training", label: "Training & Enablement" },
+        { id: "user-adoption", label: "User Adoption" },
+        { id: "teststrategie", label: "Teststrategie" },
+        { id: "testautomatisierung", label: "Testautomatisierung" },
+        { id: "berechtigungen", label: "Berechtigungskonzept" },
+        { id: "compliance", label: "Compliance & Audit" },
+        { id: "hypercare", label: "Hypercare & Go-Live" },
+        { id: "application-management", label: "Application Management" },
+        { id: "optimierung", label: "Kontinuierliche Optimierung" },
+        { id: "cloud-strategie", label: "Cloud-Strategie" },
+        { id: "innovation", label: "Innovation & Emerging Tech" }
+      ]
+    };
+
+    const viewTitles = {
+      vorprojekte: "Vorprojekte",
+      vorstudie: "Vorstudie", 
+      greenfield: "Greenfield",
+      brownfield: "Brownfield",
+      mixed: "Hybrid & Carve-Out",
+      themenradar: "Themenradar"
+    };
+
+    let currentView = 'home';
+    let selectedTopic = null;
+    let previousView = null;
+
+    function render() {
+      const app = document.getElementById('app');
+      if (selectedTopic && detailContent[selectedTopic]) {
+        app.innerHTML = renderDetailView();
+      } else if (currentView !== 'home') {
+        app.innerHTML = renderTopicGrid();
+      } else {
+        app.innerHTML = renderHome();
+      }
+    }
+
+    function renderHome() {
+      return `
+        <div class="christmas-banner">🎄 Frohe Weihnachten und ein erfolgreiches Jahr 2026! 🎄</div>
+        
+        <div class="header fade-in">
+          <div class="logo-container">
+            <div class="logo-text">We Drive Digital Innovation & Operational Excellence</div>
+            <div class="logo-main">TIMETOACT<span>GROUP</span></div>
+          </div>
+          <div class="tagline">
+            ERP Transformation Advisory
+            <div class="tagline-highlight">
+              <span>We Care.</span>
+              <span>We Drive.</span>
+              <span>We Deliver.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="container">
+          <div class="main-card fade-in">
+            <div class="card-title">ERP Transformation Cockpit</div>
+
+            <div class="button-grid">
+              <button class="nav-button" onclick="navigate('vorprojekte')">
+                <div class="nav-button-title">Vorprojekte</div>
+                <div class="nav-button-subtitle">Strategie & Assessment</div>
+                <div class="nav-button-cta">Hier Klicken →</div>
+              </button>
+              <button class="nav-button" onclick="navigate('vorstudie')">
+                <div class="nav-button-title">Vorstudie</div>
+                <div class="nav-button-subtitle">Analyse & Konzept</div>
+                <div class="nav-button-cta">Hier Klicken →</div>
+              </button>
+              <button class="nav-button" onclick="navigate('themenradar')">
+                <div class="nav-button-title">Themenradar</div>
+                <div class="nav-button-subtitle">Alle Services</div>
+                <div class="nav-button-cta">Hier Klicken →</div>
+              </button>
+            </div>
+
+            <div class="section-title">Migrationsszenarien</div>
+
+            <div class="button-grid">
+              <button class="nav-button" onclick="navigate('greenfield')">
+                <div class="nav-button-title">Greenfield</div>
+                <div class="nav-button-subtitle">Neuimplementierung</div>
+                <div class="nav-button-cta">Hier Klicken →</div>
+              </button>
+              <button class="nav-button" onclick="navigate('brownfield')">
+                <div class="nav-button-title">Brownfield</div>
+                <div class="nav-button-subtitle">System Conversion</div>
+                <div class="nav-button-cta">Hier Klicken →</div>
+              </button>
+              <button class="nav-button" onclick="navigate('mixed')">
+                <div class="nav-button-title">Hybrid</div>
+                <div class="nav-button-subtitle">Carve-Out & Merger</div>
+                <div class="nav-button-cta">Hier Klicken →</div>
+              </button>
+            </div>
+          </div>
+
+          <div class="footer">
+            <div class="footer-tagline">
+              <span>We Care.</span> <span>We Drive.</span> <span>We Deliver.</span>
+            </div>
+            <div>© 2025 TIMETOACT GROUP</div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderTopicGrid() {
+      const topics = topicLists[currentView] || [];
+      const title = viewTitles[currentView] || currentView;
+      const topicButtons = topics.map(t => 
+        '<button class="topic-button" onclick="selectTopic(\'' + t.id + '\')">' + t.label + '</button>'
+      ).join('');
+
+      return `
+        <div class="page-content">
+          <div class="page-container fade-in">
+            <div class="page-header"><h1>${title}</h1></div>
+            <div class="topic-grid">${topicButtons}</div>
+            <button class="back-button" onclick="goHome()">← Zurück</button>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderDetailView() {
+      const content = detailContent[selectedTopic];
+      const formattedContent = content.content.replace(/\n/g, '<br>');
+      const backTitle = viewTitles[previousView] || 'Übersicht';
+      
+      return `
+        <div class="page-content">
+          <div class="page-container fade-in">
+            <div class="breadcrumb">
+              <span class="breadcrumb-link" onclick="goHome()">Cockpit</span>
+              <span>›</span>
+              <span class="breadcrumb-link" onclick="goBack()">${backTitle}</span>
+              <span>›</span>
+              <span>${content.title}</span>
+            </div>
+            <div class="detail-card">
+              <h1 class="detail-header">${content.title}</h1>
+              <div class="detail-label">ERP Transformation Advisory</div>
+              <div class="detail-text">${formattedContent}</div>
+            </div>
+            <button class="back-button" onclick="goBack()">← Zurück</button>
+          </div>
+        </div>
+      `;
+    }
+
+    function navigate(view) {
+      previousView = currentView;
+      currentView = view;
+      selectedTopic = null;
+      render();
+      window.scrollTo(0, 0);
+    }
+
+    function selectTopic(topicId) {
+      previousView = currentView;
+      selectedTopic = topicId;
+      render();
+      window.scrollTo(0, 0);
+    }
+
+    function goHome() {
+      currentView = 'home';
+      selectedTopic = null;
+      previousView = null;
+      render();
+      window.scrollTo(0, 0);
+    }
+
+    function goBack() {
+      if (selectedTopic) {
+        selectedTopic = null;
+        render();
+      } else {
+        goHome();
+      }
+      window.scrollTo(0, 0);
+    }
+
+    render();
+  </script>
+</body>
+</html>

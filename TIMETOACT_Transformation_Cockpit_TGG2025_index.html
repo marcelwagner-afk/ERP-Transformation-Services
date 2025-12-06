@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#0A1A29">
+  <title>TIMETOACT GROUP - Transformation Cockpit</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%230A1A29' width='100' height='100' rx='15'/><text x='50' y='68' font-size='45' text-anchor='middle' fill='%23DA5500' font-family='sans-serif' font-weight='bold'>TTA</text></svg>">
+  <style>
+    /* =====================================================
+       TIMETOACT GROUP Corporate Design TGG 2025
+       Extracted from official presentation
+       ===================================================== */
+    :root {
+      /* Primary Colors */
+      --tta-dark: #0A1A29;           /* Hauptfarbe Dunkelblau */
+      --tta-white: #FFFFFF;
+      --tta-gray-light: #F2F2F2;
+      
+      /* Accent Colors */
+      --tta-blue-light: #7CC2FA;     /* Accent 1 - Hellblau */
+      --tta-orange: #DA5500;         /* Accent 2 - Orange (We Care, We Drive, We Deliver) */
+      --tta-teal: #098F9B;           /* Accent 3 - Türkis */
+      --tta-blue: #205EA7;           /* Accent 4 - Blau */
+      --tta-teal-dark: #006B76;      /* Accent 5 - Dunkel-Türkis */
+      --tta-blue-dark: #064A80;      /* Accent 6 - Dunkelblau */
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+      background: var(--tta-dark);
+      color: var(--tta-white);
+      min-height: 100vh;
+      line-height: 1.5;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in { animation: fadeIn 0.3s ease-out; }
+
+    /* Typography */
+    h1, h2, h3, h4 {
+      font-family: 'Segoe UI Semibold', 'Segoe UI', Arial, sans-serif;
+      font-weight: 600;
+    }
+
+    /* Container */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 16px;
+    }
+
+    /* ============================================
+       HEADER
+       ============================================ */
+    .header {
+      padding: 30px 20px 20px;
+      text-align: center;
+    }
+
+    .logo-container {
+      margin-bottom: 20px;
+    }
+
+    .logo-text {
+      font-size: 11px;
+      letter-spacing: 3px;
+      color: var(--tta-white);
+      opacity: 0.7;
+      margin-bottom: 4px;
+    }
+
+    .logo-main {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: var(--tta-white);
+    }
+
+    .logo-main span {
+      color: var(--tta-orange);
+    }
+
+    .tagline {
+      margin-top: 16px;
+      font-size: 13px;
+      color: var(--tta-white);
+      opacity: 0.9;
+    }
+
+    .tagline-highlight {
+      display: inline-block;
+      margin-top: 8px;
+    }
+
+    .tagline-highlight span {
+      font-weight: 600;
+      margin: 0 4px;
+    }
+
+    .tagline-highlight .care { color: var(--tta-orange); }
+    .tagline-highlight .drive { color: var(--tta-orange); }
+    .tagline-highlight .deliver { color: var(--tta-orange); }
+
+    /* ============================================
+       MAIN CARD
+       ============================================ */
+    .main-card {
+      background: var(--tta-white);
+      border-radius: 16px;
+      padding: 24px;
+      margin: 20px auto;
+      max-width: 700px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+
+    .card-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--tta-dark);
+      text-align: center;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid var(--tta-gray-light);
+    }
+
+    .section-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--tta-dark);
+      margin: 20px 0 12px;
+      padding-top: 16px;
+      border-top: 2px solid var(--tta-gray-light);
+    }
+
+    /* ============================================
+       NAVIGATION BUTTONS
+       ============================================ */
+    .button-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .nav-button {
+      background: var(--tta-dark);
+      border: none;
+      border-radius: 10px;
+      padding: 14px 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: center;
+    }
+
+    .nav-button:hover {
+      background: var(--tta-blue-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(10, 26, 41, 0.4);
+    }
+
+    .nav-button:active {
+      transform: scale(0.98);
+    }
+
+    .nav-button-title {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--tta-white);
+      margin-bottom: 4px;
+    }
+
+    .nav-button-subtitle {
+      font-size: 9px;
+      color: var(--tta-blue-light);
+      opacity: 0.8;
+    }
+
+    .nav-button-cta {
+      font-size: 9px;
+      color: var(--tta-orange);
+      margin-top: 6px;
+      font-weight: 600;
+    }
+
+    /* ============================================
+       TOPIC GRID
+       ============================================ */
+    .topic-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+    }
+
+    @media (min-width: 500px) {
+      .topic-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    @media (min-width: 700px) {
+      .topic-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+
+    .topic-button {
+      background: rgba(124, 194, 250, 0.1);
+      border: 1px solid rgba(124, 194, 250, 0.3);
+      border-left: 3px solid var(--tta-teal);
+      border-radius: 8px;
+      padding: 12px 10px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: left;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--tta-white);
+    }
+
+    .topic-button:hover {
+      background: rgba(124, 194, 250, 0.2);
+      border-color: var(--tta-blue-light);
+      transform: translateX(3px);
+    }
+
+    .topic-button:active {
+      transform: scale(0.98);
+    }
+
+    /* ============================================
+       PAGE CONTENT
+       ============================================ */
+    .page-content {
+      background: var(--tta-dark);
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .page-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .page-header {
+      background: linear-gradient(135deg, var(--tta-teal) 0%, var(--tta-teal-dark) 100%);
+      color: var(--tta-white);
+      padding: 20px 24px;
+      border-radius: 12px;
+      margin-bottom: 16px;
+    }
+
+    .page-header h1 {
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    /* ============================================
+       BACK BUTTON (Orange)
+       ============================================ */
+    .back-button {
+      background: var(--tta-orange);
+      color: var(--tta-white);
+      border: none;
+      border-radius: 8px;
+      padding: 12px 24px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      margin-top: 16px;
+    }
+
+    .back-button:hover {
+      background: #C44D00;
+      transform: translateY(-1px);
+    }
+
+    .back-button:active {
+      transform: scale(0.98);
+    }
+
+    /* ============================================
+       DETAIL VIEW
+       ============================================ */
+    .detail-card {
+      background: var(--tta-white);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 16px;
+    }
+
+    .detail-header {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--tta-dark);
+      padding-bottom: 12px;
+      margin-bottom: 16px;
+      border-bottom: 3px solid var(--tta-teal);
+    }
+
+    .detail-label {
+      font-size: 11px;
+      color: var(--tta-teal);
+      font-weight: 600;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .detail-text {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--tta-dark);
+      white-space: pre-line;
+    }
+
+    /* ============================================
+       BREADCRUMB
+       ============================================ */
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 12px;
+      font-size: 11px;
+      color: rgba(255,255,255,0.6);
+    }
+
+    .breadcrumb-link {
+      color: var(--tta-blue-light);
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    .breadcrumb-link:hover {
+      color: var(--tta-white);
+    }
+
+    /* ============================================
+       FOOTER
+       ============================================ */
+    .footer {
+      text-align: center;
+      padding: 30px 20px;
+      color: rgba(255,255,255,0.5);
+      font-size: 11px;
+    }
+
+    .footer-tagline {
+      color: var(--tta-white);
+      font-size: 12px;
+      margin-bottom: 8px;
+    }
+
+    .footer-tagline span {
+      color: var(--tta-orange);
+      font-weight: 600;
+    }
+
+    /* ============================================
+       CHRISTMAS BANNER
+       ============================================ */
+    .christmas-banner {
+      background: linear-gradient(90deg, var(--tta-teal-dark) 0%, var(--tta-teal) 50%, var(--tta-teal-dark) 100%);
+      color: var(--tta-white);
+      text-align: center;
+      padding: 10px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+
+  <script>
+    // =====================================================
+    // TIMETOACT GROUP - Transformation Cockpit
+    // Corporate Design TGG 2025
+    // =====================================================
+
+    const detailContent = {
+      "customer-company": {
+        title: "Timetoact Group Customer Company",
+        content: `Timetoact Group bietet die Installation und den Betrieb eines S/4HANA Customer Company-Systems an und liefert die Bereitstellung innerhalb von 24 Stunden nach Beauftragung.
+
+Customer Company bedeutet in diesem Zusammenhang, dass für die Phase der Umstellung eine Kopie des Produktivsystems erstellt wird (Brownfield). Oder es wird ein S/4HANA Demosystem mit Beispieldaten und Geschäftsprozessen bereitgestellt (Greenfield).
+
+Die Infrastruktur wird durch Timetoact Group nach Wunsch über Microsoft Azure oder AWS in einem europäischen Rechenzentrum bereitgestellt. Die Bereitstellung auf Cloud-Ressourcen ermöglicht einen flexiblen Betrieb. Durch die gezielte Abschaltung des Systems zu ungenutzten Zeiten werden Kosten gespart.
+
+Die Customer Company wird u.a. für erste Fachbereichsworkshops mit dem neuen S/4HANA-Release, die Durchführung der Custom Code Conversion oder für die iterative Durchführung von Testumstellungen eingesetzt.`
+      },
+      "migrationsszenarien": {
+        title: "Migrationsszenarien",
+        content: `Brownfield, Greenfield oder eine Mischform aus beiden Ansätzen? Eine gute erste Entscheidungsgrundlage für ein Transformationsszenario liefert ein S/4HANA Readiness Check.
+
+Wichtige Entscheidungsfragen:
+• Unterstützen aktuelle Geschäftsprozesse Ihre langfristige Strategie?
+• Können Sie die SAP Best Practices anwenden oder möchten Sie das bestehende Customizing beibehalten?
+• Wird Ihr Wechsel zu SAP S/4HANA vom Business oder von der IT vorangetrieben?
+• Können Sie in einem einzigen Schritt von der SAP ERP-Applikation zu SAP S/4HANA konvertieren?
+• Benötigen Sie transaktionale Daten der Vergangenheit im System?
+• Sind die Konsolidierung der Landschaft und die Harmonisierung von Prozessen wichtigste Faktoren?
+
+Timetoact Group führt Sie durch diese und weitere Fragen, erstellt eine Schnellbewertung und leitet eine Empfehlung für das geeignete Transformationsszenario ab.`
+      },
+      "methodik": {
+        title: "Methodik & Vorgehensweise",
+        content: `Timetoact Group nutzt das SAP Activate-Framework als Basis für Transformationsprojekte. Wir ergänzen dieses Framework mit unseren Erfahrungen aus zahlreichen Kundenprojekten sowie Best Practices, Templates und Konzepte.
+
+Von der Einführungsstrategie bis zum Go-live-Support werden alle Aktivitäten entlang definierter Projektphasen geplant:
+• Discover
+• Prepare
+• Explore
+• Realize
+• Deploy
+• Run
+
+Das Vorgehen von Timetoact Group kombiniert bedarfsgerecht agile und klassische Projektmethoden zu einem hybriden Vorgehen.`
+      },
+      "digitalisierung": {
+        title: "Digitalisierung & Innovation",
+        content: `Digitalisierung ist die Disruption des heutigen Business. Die klassischen Grenzen zwischen traditionellen und digitalisierten Geschäftsprozessen lösen sich weitgehend auf.
+
+Mit S/4HANA liefert SAP die Lösungsbausteine für unterschiedlichste Anforderungen:
+• IoT (Internet of Things)
+• Künstliche Intelligenz
+• Machine Learning
+
+Timetoact Group erarbeitet zusammen mit Ihnen die Grundpfeiler für Ihre Digitalisierungsstrategie auf Basis von S/4HANA.`
+      },
+      "lessons-learned": {
+        title: "Lessons Learned & Referenzen",
+        content: `Wir haben unsere Lektionen für Sie gelernt: In jedem der zahlreichen von uns durchgeführten S/4HANA-Projekten haben wir wertvolle Erkenntnisse gewonnen.
+
+Die Top-3-Erfolgsfaktoren bei der S/4HANA-Transformation sind:
+1. Kommunikation zu „Warum Digitalisierung und S/4HANA?"
+2. Change-Management in der Organisation
+3. Projektvorgehen nach agilen Prinzipien
+
+Timetoact Group führt zum Abschluss von Quality-Gates und Projekten jeweils Lessons Learned durch.`
+      },
+      "change-management": {
+        title: "Change Management & Training",
+        content: `Digitalisierung und Innovation können disruptive Veränderungen in der Organisationsstruktur hervorrufen. Tätigkeiten werden automatisiert und klassische Rollen verändern sich.
+
+Für eine erfolgreiche S/4HANA-Transformation stehen im Fokus:
+• Stakeholder Management
+• Proaktives Projektmarketing
+• Zielgerichtete Schulungsmaßnahmen
+• Begleitender kultureller Change
+
+Timetoact Group unterstützt Sie bei der Trainingsvorbereitung, -planung und -durchführung für Ihre S/4HANA Einführung.`
+      },
+      "migrationsstrategie": {
+        title: "Migrationsstrategie",
+        content: `Die Wahl der richtigen Migrationsstrategie ist entscheidend für den Erfolg Ihrer S/4HANA-Transformation.
+
+Timetoact Group analysiert Ihre aktuelle Systemlandschaft und empfiehlt die optimale Strategie basierend auf:
+• Ihrer IT-Strategie
+• Geschäftsanforderungen
+• Budget und Zeitrahmen
+• Risikotoleranz
+
+Wir begleiten Sie von der Strategieentwicklung bis zur erfolgreichen Umsetzung.`
+      },
+      "s4-deployment": {
+        title: "S/4 Deployment Options & Sizing",
+        content: `Wo heutzutage die physikalische Hardware des SAP S/4HANA-Systems steht, ist für die Nutzung kaum noch relevant.
+
+Deployment-Optionen:
+• On-premise bei Ihnen
+• Cloud bei Timetoact Group
+• Hyperscaler (MS Azure, AWS, Google Cloud Platform)
+• SAP HANA Enterprise Cloud (HEC)
+• Hybrid-Cloud-Modelle
+
+Timetoact Group analysiert und bewertet mögliche Deployment-Optionen hinsichtlich Ihrer Unternehmensphilosophie sowie der Kosten-Nutzen-Aspekte.`
+      },
+      "lizenzen": {
+        title: "Lizenzen",
+        content: `Das S/4HANA-Lizenzmodell bringt einige Veränderungen gegenüber der SAP ECC Lizensierung mit sich.
+
+Änderungen:
+• Aus „Named-Usern" werden klar definierte S/4HANA-Nutzungstypen
+• Engines brauchen in der Regel keine zusätzlichen Benutzerrechte mehr
+• „Digital Access" für indirekte Nutzung
+
+Als SAP-Goldpartner mit PCoE-Zertifizierung bietet Timetoact Group auch selbst den Bezug von Lizenzen und Wartung an.`
+      },
+      "readiness-check": {
+        title: "S/4HANA Readiness Check",
+        content: `Was kommt mit S/4HANA auf Sie zu? Welche fachlichen und funktionalen Themen ändern sich?
+
+Der S/4HANA Readiness Check gibt erste essenzielle Hinweise zur Readiness Ihres Systems.
+
+Timetoact Group Vorgehen:
+• Warm-up-Sessions pro Fachgebiet
+• Aufbereitung der wesentlichen Simplifizierungen
+• Business Entscheidungen benennen
+• Initiale S/4HANA Roadmap erstellen
+• Handlungsempfehlungen in Abschlusspräsentation`
+      },
+      "fiori": {
+        title: "FIORI & APPS",
+        content: `S/4HANA bietet eine umfangreiche Integration moderner und mobiler Technologien.
+
+Über SAP Fiori Apps stehen viele SAP-Standardfunktionen auf jedem beliebigen Gerät bereit.
+
+Timetoact Group Leistungen:
+• Analyse Ihres Bedarfs für den Einsatz von Apps
+• Aktivierung des SAP Fiori Launchpad
+• SAP-Fiori-Rapid-Activation-Ansatz
+• Festlegung der UX-Strategie und Fiori-Architektur
+• Berechtigung für Apps
+• Cloud-Integration`
+      },
+      "prozesse": {
+        title: "S/4HANA Prozesse & Neuerungen",
+        content: `S/4HANA stellt im Vergleich zu SAP ECC mit dem Fiori Launchpad nicht nur ein neues User Interface, sondern auch veränderte Prozessabläufe zur Verfügung.
+
+Die S/4HANA-Backend-Prozesse stehen bereit als:
+• Neu
+• Optimiert
+• Erweitert
+• Unverändert
+
+Timetoact Group führt Sie durch erste Fit-to-Standard-Workshops.`
+      },
+      "business-partner": {
+        title: "Business Partner & CVI",
+        content: `Mit SAP S/4HANA gibt es eine neue Sicht auf ein zentrales Stammdatenobjekt: den Geschäftspartner (Business Partner).
+
+Alle Geschäftspartner werden einheitlich betrachtet:
+• Kunden
+• Lieferanten
+• Mitarbeiter
+• Ansprechpartner
+
+Timetoact Group erstellt für Sie ein Konzept für die Einführung des Business Partners.`
+      },
+      "new-ledgers": {
+        title: "New Ledgers",
+        content: `Mit der Einführung von S/4HANA vollzieht SAP im Finance-Umfeld ein Re-Design auf ein neues Hauptbuch („Ledger").
+
+Neue Möglichkeiten:
+• Profit-Center-Rechnung im SAP Modul Finance
+• Buchhalterisches CO-PA
+• Erweitertes Reporting
+• Neue Anlagenbuchhaltung
+• Material Ledger
+
+Timetoact Group analysiert mit Ihnen die aktuelle Ist-Situation und erarbeitet eine Roadmap.`
+      },
+      "branchen": {
+        title: "Branchen- & Cloud-Lösungen",
+        content: `SAP ist nicht gleich SAP: Es gibt zahlreiche Branchen- und Cloud-Lösungen, die Timetoact Group unterstützt.
+
+Unsere Beratungsschwerpunkte:
+• SAP Retail & FMCG Referenzarchitektur
+• SAP CAR
+• SAP CX Lösungen (S/4 CM, Customer Data Platform, C/4-Lösungen)
+• Kassensysteme und deren Anbindung`
+      },
+      "embedded": {
+        title: "S/4HANA embedded Solutions",
+        content: `SAP hat diverse Satelliten-Systeme in das SAP S/4HANA reintegriert.
+
+Embedded Solutions:
+• SAP CRM → S/4HANA Core
+• ERP-Kundenservice (ECC-CS) und Instandhaltung (ECC-PM)
+• Konditionskontraktmanagement (CCM) für Bonusabrechnung
+• Extended Warehouse Management (EWM) als Embedded-Variante
+
+Timetoact Group berät Sie bei der Auswahl des Migrationsweges.`
+      },
+      "unicode": {
+        title: "Unicode Conversion & Migration HANA",
+        content: `SAP S/4HANA setzt Unicode voraus.
+
+Das S/4HANA-System läuft ausschließlich auf:
+• SAP-HANA-Datenbank
+• Linux als Betriebssystem
+
+Mögliche Vorgehensweisen:
+1. Alles zeitgleich umstellen (S/4HANA + HANA + Linux)
+2. Schrittweise: HANA → Unicode → Linux → S/4HANA
+
+Timetoact Group erörtert mit Ihnen die beste Vorgehensvariante.`
+      },
+      "custom-code": {
+        title: "Custom Code Conversion",
+        content: `Mit der Custom Code Conversion werden die noch benötigten kundeneigenen Objekte auf die Gegebenheiten von S/4HANA und Unicode umgestellt.
+
+Basis: Ergebnis der ABAP Test Cockpit (ATC) Prüfung
+
+Vorbereitende Maßnahmen:
+• Coding auf HANA-Compliance umstellen
+• Nicht mehr benötigtes Coding entfernen (Dekommissionierung)
+
+Timetoact Group führt die Code Conversion durch.`
+      },
+      "umsysteme": {
+        title: "Umsysteme & Integration",
+        content: `Für die Einführung von S/4HANA ist eine detailliertere Analyse aller Integrationsaspekte essenziell.
+
+Timetoact Group Unterstützung:
+• Analyse der Ist-Systemlandschaft inkl. Schnittstellen
+• Design der Soll-Architektur
+• Integration von SAP S/4HANA und SAP-Cloud-Lösungen
+• Integration von SAP- und Non-SAP-Lösungen
+• Prüfung von ABAP Add-ons auf Kompatibilität
+• Business Process Monitoring und Alerting`
+      },
+      "analytik": {
+        title: "Analytik, Reporting, Planung",
+        content: `Mit S/4HANA eröffnen sich auf Basis der HANA-Plattform ganz neue Möglichkeiten für das Reporting.
+
+Reporting Scenario Recommendations:
+• Data Warehouse mit BW/4 HANA
+• SAP Data Warehouse Cloud
+• Embedded Analytics
+• Embedded BW
+
+Zusätzlich: Bewertung der Planungsprozesse mit SAP Analytics Cloud und/oder SAP BPC.`
+      },
+      "data-cleansing": {
+        title: "Data Cleansing",
+        content: `Datenkonsistenz und Datenbereinigung sind ein wesentlicher Faktor für eine reibungslose Migration.
+
+Data Cleansing dient der:
+• Validierung der Datensätze
+• Vereinheitlichung der Daten
+• Bereinigung vor dem Go-live
+
+Wichtige Maßnahmen:
+• Offene Fachprozesse und Belege abschließen
+• Doubletten beseitigen
+• Stammdaten mit Löschkennzeichnung löschen oder archivieren`
+      },
+      "archivierung": {
+        title: "Archivierung",
+        content: `Die Anzahl der Datensätze und damit die Datenbankgröße zu reduzieren, ist eine wichtige Voraussetzung für eine effiziente Transformation.
+
+Vorteile der Archivierung:
+• Schnellere Datenbank-Umstellung
+• Geringere Nutzung des In-Memory-Speichers
+• Runtime-Kosten sparen
+• Durchschnittlich 40% Einsparung der Datenbankgröße`
+      },
+      "datenmigration": {
+        title: "Datenmigration",
+        content: `Timetoact Group hat für die Daten-Migration einen eigenen Best-Practice-Ansatz entwickelt.
+
+Eingesetzte Tools:
+• Rapid-Data-Migration-Lösungen (SAP Data Services)
+• SAP S/4HANA Migration Cockpit (LTMC/LTMOM)
+• SAP System Landscape Optimization (SLO)
+
+Wichtige Fragen:
+• Welche Daten sollen übertragen werden?
+• Wie groß ist das zu migrierende Datenvolumen?
+• Stimmen Quell- und Zielstrukturen überein?`
+      },
+      "berechtigungen": {
+        title: "Berechtigungen",
+        content: `Seien Sie Compliance-ready mit SAP-Berechtigungen.
+
+Bei Neuimplementierung (Greenfield):
+Best-Practice-Rollensätze für:
+• Projekt-Berater und -Entwickler
+• Anwendungsadministratoren
+• SAP Supporter
+• Prüfer und Auditoren
+• IT-Support
+• FI, CO, MM, SD, HCM Standardprozesse
+
+Bei System-Konversion (Brownfield):
+Migration Ihrer bestehenden Berechtigungen in eine S/4HANA-Zielumgebung.`
+      },
+      "testing": {
+        title: "Testing",
+        content: `Timetoact Group verbindet Daten-, Prozess- und Berechtigungstests und optimiert die unterschiedlichen Testphasen.
+
+Testarten:
+• Regressions- versus Integrationstests
+• Ende-zu-Ende- versus Prozesstests
+• Cutover- und Conversion-Tests
+
+Zur Testautomatisierung setzt Timetoact Group den SAP Solution Manager sowie weitere Tools ein.`
+      },
+      "technical-conversion": {
+        title: "Technical Conversion SUM",
+        content: `Die technische Systemkonvertierung ist relevant bei der S/4HANA-Transformation im Brownfield-Szenario.
+
+Kern: SAP Software Update Manager (SUM 2.0)
+
+Downtime-Minimierung:
+Da S/4HANA-Systemkonvertierungen meist nur an Wochenenden erfolgen können, müssen Strategien zur Minimierung der technischen Downtime entwickelt werden.
+
+Timetoact Group führt die technische Konvertierung inklusive Go-live durch.`
+      }
+    };
+
+    const topicLists = {
+      vorprojekte: [
+        { id: "customer-company", label: "Timetoact Group Customer Company" },
+        { id: "digitalisierung", label: "Digitalisierung & Innovation" },
+        { id: "s4-deployment", label: "S/4 Deployment & Sizing" },
+        { id: "business-partner", label: "Business Partner & CVI" },
+        { id: "lizenzen", label: "Lizenzen" },
+        { id: "unicode", label: "Unicode Conversion & Migration HANA" },
+        { id: "new-ledgers", label: "New Ledgers" },
+        { id: "data-cleansing", label: "Data Cleansing" },
+        { id: "custom-code", label: "Custom Code Conversion" },
+        { id: "umsysteme", label: "Umsysteme & Integration" },
+        { id: "archivierung", label: "Archivierung" }
+      ],
+      vorstudie: [
+        { id: "migrationsstrategie", label: "Migrationsstrategie" },
+        { id: "digitalisierung", label: "Digitalisierung & Innovation" },
+        { id: "lessons-learned", label: "Lessons Learned & Referenzen" },
+        { id: "customer-company", label: "Timetoact Group Customer Company" },
+        { id: "s4-deployment", label: "S/4 Deployment & Sizing" },
+        { id: "lizenzen", label: "Lizenzen" },
+        { id: "readiness-check", label: "S/4HANA Readiness Check" },
+        { id: "prozesse", label: "S/4HANA Prozesse & Neuerungen" },
+        { id: "umsysteme", label: "Umsysteme & Integration" }
+      ],
+      greenfield: [
+        { id: "s4-deployment", label: "S/4 Deployment & Sizing" },
+        { id: "methodik", label: "Methodik & Vorgehensweise" },
+        { id: "lessons-learned", label: "Lessons Learned & Referenzen" },
+        { id: "digitalisierung", label: "Digitalisierung & Innovation" },
+        { id: "fiori", label: "Fiori & Apps" },
+        { id: "change-management", label: "Change Management & Training" },
+        { id: "business-partner", label: "Business Partner & CVI" },
+        { id: "new-ledgers", label: "New Ledgers" },
+        { id: "branchen", label: "Branchen- & Cloud Lösungen" },
+        { id: "embedded", label: "S/4HANA embedded Solutions" },
+        { id: "custom-code", label: "Custom Code Conversion" },
+        { id: "umsysteme", label: "Umsysteme & Integration" },
+        { id: "analytik", label: "Analytik, Reporting, Planung" },
+        { id: "data-cleansing", label: "Data Cleansing" },
+        { id: "prozesse", label: "S/4HANA Prozesse & Neuerungen" },
+        { id: "technical-conversion", label: "Technical Conversion SUM" },
+        { id: "datenmigration", label: "Datenmigration" },
+        { id: "berechtigungen", label: "Berechtigungen" },
+        { id: "customer-company", label: "Timetoact Group Customer Company" },
+        { id: "testing", label: "Testing" }
+      ],
+      brownfield: [
+        { id: "prozesse", label: "S/4HANA Prozesse & Neuerungen" },
+        { id: "change-management", label: "Change Management & Training" },
+        { id: "fiori", label: "Fiori & Apps" },
+        { id: "lessons-learned", label: "Lessons Learned & Referenzen" },
+        { id: "unicode", label: "Unicode Conversion & Migration HANA" },
+        { id: "readiness-check", label: "S/4HANA Readiness Check" },
+        { id: "embedded", label: "S/4HANA embedded Solutions" },
+        { id: "methodik", label: "Methodik & Vorgehensweise" },
+        { id: "business-partner", label: "Business Partner & CVI" },
+        { id: "new-ledgers", label: "New Ledgers" },
+        { id: "archivierung", label: "Archivierung" },
+        { id: "data-cleansing", label: "Data Cleansing" },
+        { id: "custom-code", label: "Custom Code Conversion" },
+        { id: "umsysteme", label: "Umsysteme & Integration" },
+        { id: "technical-conversion", label: "Technical Conversion SUM" },
+        { id: "testing", label: "Testing" },
+        { id: "berechtigungen", label: "Berechtigungen" },
+        { id: "customer-company", label: "Timetoact Group Customer Company" }
+      ],
+      mixed: [
+        { id: "s4-deployment", label: "S/4 Deployment & Sizing" },
+        { id: "methodik", label: "Methodik & Vorgehensweise" },
+        { id: "digitalisierung", label: "Digitalisierung & Innovation" },
+        { id: "lessons-learned", label: "Lessons Learned & Referenzen" },
+        { id: "fiori", label: "Fiori & Apps" },
+        { id: "business-partner", label: "Business Partner & CVI" },
+        { id: "new-ledgers", label: "New Ledgers" },
+        { id: "branchen", label: "Branchen- & Cloud Lösungen" },
+        { id: "embedded", label: "S/4HANA embedded Solutions" },
+        { id: "change-management", label: "Change Management & Training" },
+        { id: "custom-code", label: "Custom Code Conversion" },
+        { id: "umsysteme", label: "Umsysteme & Integration" },
+        { id: "analytik", label: "Analytik, Reporting, Planung" },
+        { id: "data-cleansing", label: "Data Cleansing" },
+        { id: "prozesse", label: "S/4HANA Prozesse & Neuerungen" },
+        { id: "datenmigration", label: "Datenmigration" },
+        { id: "berechtigungen", label: "Berechtigungen" },
+        { id: "customer-company", label: "Timetoact Group Customer Company" },
+        { id: "testing", label: "Testing" },
+        { id: "archivierung", label: "Archivierung" }
+      ],
+      themenradar: [
+        { id: "change-management", label: "Change Management & Training" },
+        { id: "migrationsstrategie", label: "Migrationsstrategie" },
+        { id: "methodik", label: "Methodik & Vorgehensweise" },
+        { id: "digitalisierung", label: "Digitalisierung & Innovation" },
+        { id: "lessons-learned", label: "Lessons Learned & Referenzen" },
+        { id: "prozesse", label: "S/4HANA Prozesse & Neuerungen" },
+        { id: "s4-deployment", label: "S/4 Deployment & Sizing" },
+        { id: "lizenzen", label: "Lizenzen" },
+        { id: "readiness-check", label: "S/4HANA Readiness Check" },
+        { id: "fiori", label: "Fiori & Apps" },
+        { id: "unicode", label: "Unicode Conversion & Migration HANA" },
+        { id: "business-partner", label: "Business Partner & CVI" },
+        { id: "new-ledgers", label: "New Ledgers" },
+        { id: "branchen", label: "Branchen- & Cloud Lösungen" },
+        { id: "embedded", label: "S/4HANA embedded Solutions" },
+        { id: "archivierung", label: "Archivierung" },
+        { id: "custom-code", label: "Custom Code Conversion" },
+        { id: "umsysteme", label: "Umsysteme & Integration" },
+        { id: "analytik", label: "Analytik, Reporting, Planung" },
+        { id: "data-cleansing", label: "Data Cleansing" },
+        { id: "technical-conversion", label: "Technical Conversion SUM" },
+        { id: "datenmigration", label: "Datenmigration" },
+        { id: "berechtigungen", label: "Berechtigungen" },
+        { id: "customer-company", label: "Timetoact Group Customer Company" },
+        { id: "testing", label: "Testing" }
+      ]
+    };
+
+    const viewTitles = {
+      vorprojekte: "Vorprojekte",
+      vorstudie: "Vorstudie", 
+      greenfield: "Greenfield",
+      brownfield: "Brownfield",
+      mixed: "Mixed (selektiver Datentransfer)",
+      themenradar: "Transformationsthemenradar"
+    };
+
+    let currentView = 'home';
+    let selectedTopic = null;
+    let previousView = null;
+
+    function render() {
+      const app = document.getElementById('app');
+      if (selectedTopic && detailContent[selectedTopic]) {
+        app.innerHTML = renderDetailView();
+      } else if (currentView !== 'home') {
+        app.innerHTML = renderTopicGrid();
+      } else {
+        app.innerHTML = renderHome();
+      }
+    }
+
+    function renderHome() {
+      return `
+        <div class="christmas-banner">🎄 Frohe Weihnachten und ein erfolgreiches Jahr 2026! 🎄</div>
+        
+        <div class="header fade-in">
+          <div class="logo-container">
+            <div class="logo-text">We Drive Digital Innovation & Operational Excellence</div>
+            <div class="logo-main">TIMETOACT<span>GROUP</span></div>
+          </div>
+          <div class="tagline">
+            TIMETOACT ist unsere Mentalität und unser Anspruch:
+            <div class="tagline-highlight">
+              <span class="care">We Care.</span>
+              <span class="drive">We Drive.</span>
+              <span class="deliver">We Deliver.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="container">
+          <div class="main-card fade-in">
+            <div class="card-title">Transformation Cockpit</div>
+
+            <div class="button-grid">
+              <button class="nav-button" onclick="navigate('vorprojekte')">
+                <div class="nav-button-title">Vorprojekte</div>
+                <div class="nav-button-cta">Hier Klicken →</div>
+              </button>
+              <button class="nav-button" onclick="navigate('vorstudie')">
+                <div class="nav-button-title">Vorstudie</div>
+                <div class="nav-button-cta">Hier Klicken →</div>
+              </button>
+              <button class="nav-button" onclick="navigate('themenradar')">
+                <div class="nav-button-title">Individuelle Studien</div>
+                <div class="nav-button-cta">Hier Klicken →</div>
+              </button>
+            </div>
+
+            <div class="section-title">Migrationsszenarien</div>
+
+            <div class="button-grid">
+              <button class="nav-button" onclick="navigate('greenfield')">
+                <div class="nav-button-title">Greenfield</div>
+                <div class="nav-button-cta">Hier Klicken →</div>
+              </button>
+              <button class="nav-button" onclick="navigate('brownfield')">
+                <div class="nav-button-title">Brownfield</div>
+                <div class="nav-button-cta">Hier Klicken →</div>
+              </button>
+              <button class="nav-button" onclick="navigate('mixed')">
+                <div class="nav-button-title">Mixed</div>
+                <div class="nav-button-subtitle">(selektiver Datentransfer)</div>
+                <div class="nav-button-cta">Hier Klicken →</div>
+              </button>
+            </div>
+          </div>
+
+          <div class="footer">
+            <div class="footer-tagline">
+              <span>We Care.</span> <span>We Drive.</span> <span>We Deliver.</span>
+            </div>
+            <div>© 2025 TIMETOACT GROUP</div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderTopicGrid() {
+      const topics = topicLists[currentView] || [];
+      const title = viewTitles[currentView] || currentView;
+      const topicButtons = topics.map(t => 
+        '<button class="topic-button" onclick="selectTopic(\'' + t.id + '\')">' + t.label + '</button>'
+      ).join('');
+
+      return `
+        <div class="page-content">
+          <div class="page-container fade-in">
+            <div class="page-header"><h1>${title}</h1></div>
+            <div class="topic-grid">${topicButtons}</div>
+            <button class="back-button" onclick="goHome()">← Zurück</button>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderDetailView() {
+      const content = detailContent[selectedTopic];
+      const formattedContent = content.content.replace(/\n/g, '<br>');
+      const backTitle = viewTitles[previousView] || 'Übersicht';
+      
+      return `
+        <div class="page-content">
+          <div class="page-container fade-in">
+            <div class="breadcrumb">
+              <span class="breadcrumb-link" onclick="goHome()">Cockpit</span>
+              <span>›</span>
+              <span class="breadcrumb-link" onclick="goBack()">${backTitle}</span>
+              <span>›</span>
+              <span>${content.title}</span>
+            </div>
+            <div class="detail-card">
+              <h1 class="detail-header">${content.title}</h1>
+              <div class="detail-label">Info</div>
+              <div class="detail-text">${formattedContent}</div>
+            </div>
+            <button class="back-button" onclick="goBack()">← Zurück</button>
+          </div>
+        </div>
+      `;
+    }
+
+    function navigate(view) {
+      previousView = currentView;
+      currentView = view;
+      selectedTopic = null;
+      render();
+      window.scrollTo(0, 0);
+    }
+
+    function selectTopic(topicId) {
+      previousView = currentView;
+      selectedTopic = topicId;
+      render();
+      window.scrollTo(0, 0);
+    }
+
+    function goHome() {
+      currentView = 'home';
+      selectedTopic = null;
+      previousView = null;
+      render();
+      window.scrollTo(0, 0);
+    }
+
+    function goBack() {
+      if (selectedTopic) {
+        selectedTopic = null;
+        render();
+      } else {
+        goHome();
+      }
+      window.scrollTo(0, 0);
+    }
+
+    render();
+  </script>
+</body>
+</html>
