@@ -1,0 +1,1394 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#0A1A29">
+  <title>TIMETOACT GROUP - ERP Transformation Advisory</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%230A1A29' width='100' height='100' rx='15'/><text x='50' y='68' font-size='45' text-anchor='middle' fill='%23DA5500' font-family='sans-serif' font-weight='bold'>TTA</text></svg>">
+  <style>
+    :root {
+      --tta-dark: #0A1A29;
+      --tta-white: #FFFFFF;
+      --tta-gray-light: #F2F2F2;
+      --tta-blue-light: #7CC2FA;
+      --tta-orange: #DA5500;
+      --tta-teal: #098F9B;
+      --tta-blue: #205EA7;
+      --tta-teal-dark: #006B76;
+      --tta-blue-dark: #064A80;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+    body {
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+      background: var(--tta-dark);
+      color: var(--tta-white);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .fade-in { animation: fadeIn 0.3s ease-out; }
+
+    h1, h2, h3, h4 { font-family: 'Segoe UI Semibold', 'Segoe UI', Arial, sans-serif; font-weight: 600; }
+
+    .container { max-width: 950px; margin: 0 auto; padding: 16px; }
+
+    /* Header */
+    .header { padding: 30px 20px 20px; text-align: center; }
+    .logo-text { font-size: 11px; letter-spacing: 3px; color: var(--tta-white); opacity: 0.7; margin-bottom: 4px; }
+    .logo-main { font-size: 28px; font-weight: 700; letter-spacing: 1px; color: var(--tta-white); }
+    .logo-main span { color: var(--tta-orange); }
+    .tagline { margin-top: 16px; font-size: 14px; color: var(--tta-white); opacity: 0.9; }
+    .tagline-highlight { display: inline-block; margin-top: 8px; }
+    .tagline-highlight span { font-weight: 600; margin: 0 4px; color: var(--tta-orange); }
+
+    /* Stats Banner */
+    .stats-banner {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 20px auto;
+      max-width: 600px;
+    }
+    .stat-box {
+      background: rgba(218, 85, 0, 0.15);
+      border: 1px solid var(--tta-orange);
+      border-radius: 10px;
+      padding: 12px 8px;
+      text-align: center;
+    }
+    .stat-number { font-size: 24px; font-weight: 700; color: var(--tta-orange); }
+    .stat-label { font-size: 10px; color: var(--tta-white); opacity: 0.8; margin-top: 4px; }
+
+    /* Main Card */
+    .main-card {
+      background: var(--tta-white);
+      border-radius: 16px;
+      padding: 24px;
+      margin: 20px auto;
+      max-width: 800px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+    .card-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--tta-dark);
+      text-align: center;
+      margin-bottom: 8px;
+    }
+    .card-subtitle {
+      font-size: 12px;
+      color: #666;
+      text-align: center;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid var(--tta-gray-light);
+    }
+    .section-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--tta-dark);
+      margin: 20px 0 12px;
+      padding-top: 16px;
+      border-top: 2px solid var(--tta-gray-light);
+    }
+
+    /* Phase Grid */
+    .phase-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+    @media (max-width: 600px) { .phase-grid { grid-template-columns: repeat(2, 1fr); } }
+
+    .phase-button {
+      background: var(--tta-dark);
+      border: none;
+      border-radius: 10px;
+      padding: 14px 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: center;
+      position: relative;
+    }
+    .phase-button:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(10, 26, 41, 0.4); }
+    .phase-button:active { transform: scale(0.98); }
+    .phase-button.analyse { border-bottom: 3px solid var(--tta-teal); }
+    .phase-button.konzeption { border-bottom: 3px solid var(--tta-blue); }
+    .phase-button.umsetzung { border-bottom: 3px solid var(--tta-orange); }
+    .phase-button.betrieb { border-bottom: 3px solid var(--tta-teal-dark); }
+    .phase-number { font-size: 20px; font-weight: 700; color: var(--tta-orange); }
+    .phase-title { font-size: 11px; font-weight: 600; color: var(--tta-white); margin: 4px 0; }
+    .phase-count { font-size: 9px; color: var(--tta-blue-light); }
+
+    /* Info Buttons */
+    .info-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 12px; }
+    @media (max-width: 500px) { .info-grid { grid-template-columns: 1fr; } }
+
+    .info-button {
+      background: linear-gradient(135deg, rgba(9, 143, 155, 0.1) 0%, rgba(6, 74, 128, 0.1) 100%);
+      border: 1px solid var(--tta-teal);
+      border-radius: 8px;
+      padding: 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: left;
+    }
+    .info-button:hover { background: rgba(9, 143, 155, 0.2); transform: translateY(-2px); }
+    .info-button-title { font-size: 11px; font-weight: 600; color: var(--tta-dark); }
+    .info-button-desc { font-size: 9px; color: #666; margin-top: 4px; }
+
+    /* Topic Grid */
+    .topic-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    @media (min-width: 500px) { .topic-grid { grid-template-columns: repeat(3, 1fr); } }
+
+    .topic-button {
+      background: rgba(124, 194, 250, 0.1);
+      border: 1px solid rgba(124, 194, 250, 0.3);
+      border-left: 3px solid var(--tta-teal);
+      border-radius: 8px;
+      padding: 12px 10px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: left;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--tta-white);
+    }
+    .topic-button:hover { background: rgba(124, 194, 250, 0.2); border-color: var(--tta-blue-light); transform: translateX(3px); }
+    .topic-button:active { transform: scale(0.98); }
+    .topic-button.analyse { border-left-color: var(--tta-teal); }
+    .topic-button.konzeption { border-left-color: var(--tta-blue); }
+    .topic-button.umsetzung { border-left-color: var(--tta-orange); }
+    .topic-button.betrieb { border-left-color: var(--tta-teal-dark); }
+
+    /* Page Content */
+    .page-content { background: var(--tta-dark); min-height: 100vh; padding: 20px; }
+    .page-container { max-width: 900px; margin: 0 auto; }
+    .page-header {
+      background: linear-gradient(135deg, var(--tta-teal) 0%, var(--tta-teal-dark) 100%);
+      color: var(--tta-white);
+      padding: 20px 24px;
+      border-radius: 12px;
+      margin-bottom: 16px;
+    }
+    .page-header.analyse { background: linear-gradient(135deg, var(--tta-teal) 0%, var(--tta-teal-dark) 100%); }
+    .page-header.konzeption { background: linear-gradient(135deg, var(--tta-blue) 0%, var(--tta-blue-dark) 100%); }
+    .page-header.umsetzung { background: linear-gradient(135deg, var(--tta-orange) 0%, #B34700 100%); }
+    .page-header.betrieb { background: linear-gradient(135deg, var(--tta-teal-dark) 0%, #004D54 100%); }
+    .page-header h1 { font-size: 20px; font-weight: 600; }
+    .page-header-sub { font-size: 12px; opacity: 0.9; margin-top: 4px; }
+
+    /* Back Button */
+    .back-button {
+      background: var(--tta-orange);
+      color: var(--tta-white);
+      border: none;
+      border-radius: 8px;
+      padding: 12px 24px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      margin-top: 16px;
+    }
+    .back-button:hover { background: #C44D00; transform: translateY(-1px); }
+    .back-button:active { transform: scale(0.98); }
+
+    /* Detail View */
+    .detail-card {
+      background: var(--tta-white);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 16px;
+    }
+    .detail-header {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--tta-dark);
+      padding-bottom: 12px;
+      margin-bottom: 16px;
+      border-bottom: 3px solid var(--tta-teal);
+    }
+    .detail-section {
+      margin-bottom: 20px;
+    }
+    .detail-label {
+      font-size: 11px;
+      color: var(--tta-teal);
+      font-weight: 600;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .detail-text {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--tta-dark);
+    }
+    .detail-list {
+      list-style: none;
+      padding: 0;
+    }
+    .detail-list li {
+      padding: 6px 0 6px 20px;
+      position: relative;
+      font-size: 13px;
+      color: var(--tta-dark);
+    }
+    .detail-list li:before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--tta-teal);
+      font-weight: bold;
+    }
+    .deliverable-box {
+      background: var(--tta-gray-light);
+      border-radius: 8px;
+      padding: 16px;
+      margin-top: 12px;
+    }
+    .deliverable-title {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--tta-orange);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+    .highlight-box {
+      background: linear-gradient(135deg, rgba(218, 85, 0, 0.1) 0%, rgba(9, 143, 155, 0.1) 100%);
+      border-left: 3px solid var(--tta-orange);
+      padding: 12px 16px;
+      margin: 12px 0;
+      border-radius: 0 8px 8px 0;
+    }
+    .highlight-box p {
+      font-size: 13px;
+      color: var(--tta-dark);
+      font-style: italic;
+    }
+
+    /* Breadcrumb */
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 12px;
+      font-size: 11px;
+      color: rgba(255,255,255,0.6);
+    }
+    .breadcrumb-link { color: var(--tta-blue-light); cursor: pointer; text-decoration: underline; }
+    .breadcrumb-link:hover { color: var(--tta-white); }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 30px 20px;
+      color: rgba(255,255,255,0.5);
+      font-size: 11px;
+    }
+    .footer-tagline { color: var(--tta-white); font-size: 12px; margin-bottom: 8px; }
+    .footer-tagline span { color: var(--tta-orange); font-weight: 600; }
+
+    /* Christmas Banner */
+    .christmas-banner {
+      background: linear-gradient(90deg, var(--tta-teal-dark) 0%, var(--tta-teal) 50%, var(--tta-teal-dark) 100%);
+      color: var(--tta-white);
+      text-align: center;
+      padding: 10px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    /* Advantage Cards */
+    .advantage-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin: 16px 0; }
+    @media (max-width: 500px) { .advantage-grid { grid-template-columns: 1fr; } }
+    .advantage-card {
+      background: var(--tta-gray-light);
+      border-radius: 10px;
+      padding: 16px;
+      border-left: 3px solid var(--tta-orange);
+    }
+    .advantage-card h4 { font-size: 13px; color: var(--tta-dark); margin-bottom: 8px; }
+    .advantage-card p { font-size: 11px; color: #666; }
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+
+  <script>
+    // =====================================================
+    // TIMETOACT GROUP - ERP Transformation Advisory
+    // Wir mappen Ihre Prozesse zum passenden ERP
+    // =====================================================
+
+    const detailContent = {
+      // === WARUM ADVISORY ===
+      "warum-advisory": {
+        title: "Warum ERP Transformation Advisory?",
+        phase: "info",
+        content: {
+          intro: `60-70% aller ERP-Projekte überschreiten Budget oder Timeline. Die typische Budgetüberschreitung bei großen Transformationen liegt bei 20-40%. Die vier Hauptursachen sind bekannt – und vermeidbar.`,
+          sections: [
+            {
+              label: "Die vier Hauptursachen für ERP-Projektprobleme",
+              items: [
+                "Unklare Prozessanforderungen: Fehlende Ist-Analyse führt zu Scope Creep",
+                "Schlechte Datenqualität: Stammdaten werden zu spät bereinigt",
+                "Unrealistische Planung: Komplexität wird systematisch unterschätzt",
+                "Fehlende unabhängige QA: Der Systemintegrator kontrolliert sich selbst"
+              ]
+            }
+          ],
+          highlight: "Die Lösung: Ein unabhängiger Advisory-Partner, der Ihre Interessen vertritt – nicht die des ERP-Vendors oder Systemintegrators.",
+          deliverables: ["Objektive Bewertung", "Risikominimierung", "Budgetsicherheit", "Projekterfolg"]
+        }
+      },
+      "interessenkonflikte": {
+        title: "Interessenkonflikte der Systemintegratoren",
+        phase: "info",
+        content: {
+          intro: `Große Systemintegratoren haben strukturelle Interessenkonflikte, die unabhängig von den handelnden Personen bestehen. Diese Konflikte können Ihrem Projekt schaden.`,
+          sections: [
+            {
+              label: "Lizenzprovisionen – Vendor-Abhängigkeit",
+              text: "Große SIs verdienen an ERP-Lizenzen. Die Empfehlung fällt oft zugunsten des Partners aus – nicht zugunsten Ihrer Prozesse. Sie erhalten möglicherweise nicht das ERP, das am besten zu Ihnen passt."
+            },
+            {
+              label: "Junior-Pyramide – Unerfahrene Teams",
+              text: "Senior-Partner verkaufen, Juniors liefern. Sie zahlen für die Einarbeitung unerfahrener Berater auf Ihre Kosten statt für echte Erfahrung und produktive Arbeit ab Tag 1."
+            },
+            {
+              label: "Scope-Maximierung – Mehr ist mehr",
+              text: "Je größer das Projekt, desto höher der Umsatz. Es fehlt der Anreiz, schlanke und effiziente Lösungen zu empfehlen. Customizations werden gefördert statt verhindert."
+            }
+          ],
+          highlight: "Das Geschäftsmodell erzeugt systemische Interessenkonflikte – unabhängig von den handelnden Personen.",
+          deliverables: ["Objektive Beratung", "Keine Lizenzprovisionen", "Senior-Berater", "Fokus auf Ihre Ziele"]
+        }
+      },
+      "vorteile": {
+        title: "Unsere vier unfairen Vorteile",
+        phase: "info",
+        content: {
+          intro: `Wir haben unser Geschäftsmodell bewusst so gestaltet, dass unsere Interessen mit Ihren übereinstimmen. Das macht uns zum idealen Partner für Ihre ERP-Transformation.`,
+          sections: [
+            {
+              label: "100% Herstellerneutral",
+              text: "Keine Lizenzen, keine Provisionen. Wir empfehlen das ERP, das zu Ihren Prozessen passt – ob SAP, Oracle, Microsoft, Infor oder andere. Unsere Empfehlung basiert auf Ihren Anforderungen, nicht auf unserer Marge."
+            },
+            {
+              label: "Process First",
+              text: "Wir verstehen und optimieren Ihre Prozesse zuerst – dann wählen wir die Technologie. Das verhindert teure Customizations und stellt sicher, dass das ERP zu Ihnen passt, nicht umgekehrt."
+            },
+            {
+              label: "Senior-Only",
+              text: "Keine Junior-Pyramide. Erfahrene Berater mit Cross-ERP-Erfahrung, produktiv ab Tag 1. Sie bezahlen für Ergebnisse, nicht für Einarbeitung."
+            },
+            {
+              label: "Modularer Baukasten",
+              text: "21 Services in 4 Phasen. Einzeln buchbar, kein Vendor Lock-in. Flexibel rein, flexibel raus – Sie entscheiden über den Umfang."
+            }
+          ],
+          highlight: "Wir verkaufen keine Lizenzen. Wir liefern Projekterfolg.",
+          deliverables: ["Objektive Empfehlungen", "Multi-ERP Know-how", "Keine teuren Customizations", "Flexibel rein, flexibel raus"]
+        }
+      },
+      "erp-systeme": {
+        title: "Erst Prozesse, dann Technologie",
+        phase: "info",
+        content: {
+          intro: `Der übliche Weg: ERP zuerst wählen, dann Prozesse anpassen. Das führt zu teuren Customizations und Vendor Lock-in. Unser Weg: Prozesse verstehen, optimieren, dann objektiv das beste ERP wählen.`,
+          sections: [
+            {
+              label: "Der übliche Weg (problematisch)",
+              items: [
+                "Vendor empfiehlt ERP basierend auf Partnerschaft",
+                "Prozesse werden an das System angepasst",
+                "Teure Customizations entstehen",
+                "Vendor Lock-in wird zementiert"
+              ]
+            },
+            {
+              label: "Unser Weg (empfohlen)",
+              items: [
+                "Ist-Prozesse verstehen und dokumentieren",
+                "Soll-Prozesse definieren und optimieren",
+                "ERP-Systeme objektiv vergleichen",
+                "Beste Lösung für IHRE Anforderungen wählen"
+              ]
+            },
+            {
+              label: "Unterstützte ERP-Systeme",
+              text: "SAP S/4HANA, Oracle Cloud, Microsoft Dynamics 365, Infor, IFS, Odoo und weitere. Wir kennen die Stärken und Schwächen jedes Systems und empfehlen objektiv."
+            }
+          ],
+          highlight: "Wir mappen Ihre Geschäftsprozesse zum passenden ERP – nicht umgekehrt.",
+          deliverables: ["Prozess-Dokumentation", "ERP-Vergleich", "Objektive Empfehlung", "Fit-to-Standard"]
+        }
+      },
+
+      // === PHASE 1: ANALYSE ===
+      "process-mapping": {
+        title: "Process Mapping",
+        phase: "analyse",
+        content: {
+          intro: `Das Process Mapping ist der Grundstein jeder erfolgreichen ERP-Transformation. Wir dokumentieren Ihre Ist-Prozesse und identifizieren Optimierungspotenziale – bevor Sie sich für ein ERP entscheiden.`,
+          sections: [
+            {
+              label: "Was wir tun",
+              items: [
+                "Strukturierte Prozessaufnahme in Workshops mit Ihren Fachbereichen",
+                "Dokumentation in BPMN 2.0 für einheitliches Verständnis",
+                "Identifikation von Medienbrüchen und Ineffizienzen",
+                "Benchmarking gegen Best Practices Ihrer Branche",
+                "Priorisierung der Optimierungspotenziale"
+              ]
+            },
+            {
+              label: "Warum das wichtig ist",
+              text: "Ohne klare Prozessdokumentation wird jedes ERP-Projekt zum Blindflug. Scope Creep, Budgetüberschreitungen und Unzufriedenheit sind die Folge. Process Mapping schafft die Grundlage für fundierte Entscheidungen."
+            }
+          ],
+          highlight: "Wer seine Prozesse nicht kennt, kann kein ERP auswählen. Wer seine Prozesse kennt, wählt das richtige ERP.",
+          deliverables: ["Prozesslandkarte (BPMN)", "Optimierungspotenziale", "Pain Points dokumentiert", "Prozess-KPIs"]
+        }
+      },
+      "readiness-assessment": {
+        title: "Readiness Assessment",
+        phase: "analyse",
+        content: {
+          intro: `Das Readiness Assessment bewertet, wie bereit Ihre Organisation für eine ERP-Transformation wirklich ist. Wir identifizieren Gaps und Risiken, bevor sie zu teuren Problemen werden.`,
+          sections: [
+            {
+              label: "Assessment-Dimensionen",
+              items: [
+                "Organisatorische Readiness: Change-Fähigkeit, Ressourcenverfügbarkeit, Management-Commitment",
+                "Technische Readiness: IT-Infrastruktur, Systemlandschaft, Integrationsfähigkeit",
+                "Prozess-Readiness: Standardisierungsgrad, Dokumentationsstand, Prozessreife",
+                "Daten-Readiness: Datenqualität, Stammdaten-Governance, Migrationsfähigkeit",
+                "Budget- und Zeitrahmen-Realismus: Sind die Erwartungen realistisch?"
+              ]
+            },
+            {
+              label: "Ergebnis",
+              text: "Sie erhalten einen detaillierten Readiness-Report mit Ampelbewertung für jede Dimension, identifizierten Gaps und konkreten Handlungsempfehlungen zur Schließung der Gaps vor Projektstart."
+            }
+          ],
+          highlight: "Ein ehrliches Readiness Assessment heute verhindert teure Überraschungen morgen.",
+          deliverables: ["Readiness-Report", "Gap-Analyse", "Handlungsempfehlungen", "Risiko-Assessment"]
+        }
+      },
+      "business-case": {
+        title: "Business Case & ROI",
+        phase: "analyse",
+        content: {
+          intro: `Ein fundierter Business Case ist die Grundlage für die Projektfreigabe und das Budget. Wir erstellen eine realistische TCO-Berechnung und ROI-Analyse für verschiedene ERP-Optionen.`,
+          sections: [
+            {
+              label: "Business Case Inhalte",
+              items: [
+                "Ist-Kosten-Analyse: Was kostet Ihre aktuelle Systemlandschaft wirklich?",
+                "Investitionskosten: Lizenzen, Implementierung, Hardware, Schulung",
+                "Laufende Kosten: Wartung, Support, Betrieb, Updates",
+                "Quantifizierbare Benefits: Prozesseffizienz, Automatisierung, Zeitersparnis",
+                "Qualitative Benefits: Transparenz, Entscheidungsqualität, Compliance"
+              ]
+            },
+            {
+              label: "TCO-Vergleich",
+              text: "Wir vergleichen die Total Cost of Ownership verschiedener ERP-Optionen über 5-10 Jahre. So sehen Sie, welche Lösung langfristig die wirtschaftlichste ist – nicht nur bei den Lizenzkosten."
+            }
+          ],
+          highlight: "Der günstigste Anbieter ist selten der wirtschaftlichste. Wir rechnen ehrlich.",
+          deliverables: ["Business Case Dokument", "TCO-Vergleich", "ROI-Berechnung", "Sensitivitätsanalyse"]
+        }
+      },
+      "datenqualitaet": {
+        title: "Datenqualitäts-Analyse",
+        phase: "analyse",
+        content: {
+          intro: `Schlechte Datenqualität ist eine der Hauptursachen für ERP-Projektprobleme. Wir analysieren Ihre Stammdaten und ermitteln den Bereinigungsbedarf – rechtzeitig vor der Migration.`,
+          sections: [
+            {
+              label: "Analyse-Bereiche",
+              items: [
+                "Stammdaten: Kunden, Lieferanten, Materialien, Stücklisten",
+                "Bewegungsdaten: Offene Posten, Aufträge, Bestände",
+                "Organisationsdaten: Buchungskreise, Werke, Kostenstellen",
+                "Customizing-Daten: Einstellungen, Konfiguration, Anpassungen"
+              ]
+            },
+            {
+              label: "Qualitätskriterien",
+              items: [
+                "Vollständigkeit: Fehlen kritische Datenfelder?",
+                "Konsistenz: Widersprüche zwischen Systemen?",
+                "Aktualität: Veraltete oder obsolete Datensätze?",
+                "Dubletten: Mehrfach angelegte Stammdaten?"
+              ]
+            }
+          ],
+          highlight: "Garbage in, garbage out. Datenbereinigung muss VOR der Migration starten, nicht währenddessen.",
+          deliverables: ["Datenqualitäts-Report", "Bereinigungskonzept", "Priorisierte Maßnahmenliste", "Migrationsfähigkeits-Bewertung"]
+        }
+      },
+      "erp-evaluation": {
+        title: "ERP-Evaluation",
+        phase: "analyse",
+        content: {
+          intro: `Wir evaluieren ERP-Systeme objektiv nach Ihren Kriterien – ohne Vendor-Bias. Das Ergebnis ist eine fundierte Empfehlung, welches System am besten zu Ihren Prozessen passt.`,
+          sections: [
+            {
+              label: "Evaluierte Systeme",
+              items: [
+                "SAP S/4HANA (Public Cloud, Private Cloud, On-Premise)",
+                "Oracle Cloud ERP / NetSuite",
+                "Microsoft Dynamics 365 Finance & Operations",
+                "Infor CloudSuite (branchenspezifisch)",
+                "IFS Cloud, Odoo und weitere"
+              ]
+            },
+            {
+              label: "Bewertungskriterien",
+              items: [
+                "Funktionale Abdeckung Ihrer Anforderungen",
+                "Fit-to-Standard vs. Customizing-Bedarf",
+                "Total Cost of Ownership über 5-10 Jahre",
+                "Implementierungsrisiko und -aufwand",
+                "Zukunftsfähigkeit und Innovationskraft"
+              ]
+            }
+          ],
+          highlight: "Wir empfehlen das ERP, das zu Ihnen passt – nicht das, an dem wir am meisten verdienen.",
+          deliverables: ["ERP-Vergleichsmatrix", "Scoring nach Ihren Kriterien", "Empfehlung mit Begründung", "Shortlist für PoC"]
+        }
+      },
+      "roadmap": {
+        title: "Transformations-Roadmap",
+        phase: "analyse",
+        content: {
+          intro: `Die Roadmap ist Ihr Fahrplan für die ERP-Transformation. Wir definieren Meilensteine, identifizieren Quick Wins und planen die Transformation in machbaren Schritten.`,
+          sections: [
+            {
+              label: "Roadmap-Elemente",
+              items: [
+                "Phasenplan mit realistischen Zeitrahmen",
+                "Meilensteine und Quality Gates",
+                "Quick Wins für frühe Erfolge",
+                "Abhängigkeiten und kritischer Pfad",
+                "Ressourcenplanung und Budget-Allokation"
+              ]
+            },
+            {
+              label: "Szenarien",
+              text: "Wir entwickeln verschiedene Szenarien (konservativ, optimistisch, aggressiv) mit unterschiedlichen Zeit- und Budgetrahmen, damit Sie eine informierte Entscheidung treffen können."
+            }
+          ],
+          highlight: "Eine realistische Roadmap ist wichtiger als eine optimistische. Wir planen ehrlich.",
+          deliverables: ["Transformations-Roadmap", "Meilensteinplan", "Quick-Win-Liste", "Ressourcenplan"]
+        }
+      },
+
+      // === PHASE 2: KONZEPTION ===
+      "soll-prozesse": {
+        title: "Soll-Prozess-Definition",
+        phase: "konzeption",
+        content: {
+          intro: `Auf Basis der Ist-Analyse definieren wir Ihre optimierten Soll-Prozesse. Der Fokus liegt auf Fit-to-Standard: Wir nutzen ERP-Best-Practices, wo immer möglich.`,
+          sections: [
+            {
+              label: "Vorgehen",
+              items: [
+                "Definition der Soll-Prozesse mit Ihren Fachbereichen",
+                "Integration von ERP-Best-Practices und Branchenstandards",
+                "Fit-to-Standard-Prüfung: Passt der Prozess zum ERP-Standard?",
+                "Identifikation unvermeidbarer Anpassungen",
+                "Dokumentation in BPMN 2.0"
+              ]
+            },
+            {
+              label: "Fit-to-Standard Prinzip",
+              text: "Jede Abweichung vom Standard verursacht Kosten – bei der Implementierung, bei Updates, beim Support. Wir maximieren Fit-to-Standard und minimieren Customizing."
+            }
+          ],
+          highlight: "80% Standard, 20% Anpassung ist das Ziel. Nicht umgekehrt.",
+          deliverables: ["Soll-Prozess-Modelle", "Fit-to-Standard-Report", "Customizing-Anforderungen", "Prozess-KPIs"]
+        }
+      },
+      "gap-analyse": {
+        title: "Gap-Analyse",
+        phase: "konzeption",
+        content: {
+          intro: `Die Gap-Analyse zeigt das Delta zwischen Ihren Soll-Prozessen und dem ERP-Standard. Wir bewerten den ERP-Fit und identifizieren den Customizing-Bedarf.`,
+          sections: [
+            {
+              label: "Gap-Kategorien",
+              items: [
+                "Fit: Der ERP-Standard erfüllt die Anforderung",
+                "Gap mit Workaround: Anforderung erfüllbar durch Konfiguration/Workaround",
+                "Gap mit Customizing: Entwicklung erforderlich",
+                "Gap mit Add-On: Partnerlösung oder Drittanbieter empfohlen",
+                "Showstopper: Kritische Anforderung nicht erfüllbar"
+              ]
+            },
+            {
+              label: "Bewertung",
+              text: "Jeder Gap wird nach Kritikalität, Aufwand und Risiko bewertet. Das Ergebnis ist eine priorisierte Liste von Entscheidungen, die Sie vor der Implementierung treffen müssen."
+            }
+          ],
+          highlight: "Gaps früh erkennen kostet wenig. Gaps spät erkennen kostet viel.",
+          deliverables: ["Gap-Report", "Entscheidungsmatrix", "Customizing-Backlog", "Risikobewertung"]
+        }
+      },
+      "loesungsdesign": {
+        title: "Lösungsdesign",
+        phase: "konzeption",
+        content: {
+          intro: `Das Lösungsdesign ist der technische Blueprint für Ihre ERP-Implementierung. Wir definieren Architektur, Konfiguration und Customizing im Detail.`,
+          sections: [
+            {
+              label: "Design-Elemente",
+              items: [
+                "System-Architektur: Landscape, Instanzen, Mandanten",
+                "Organisations-Strukturen: Buchungskreise, Werke, Vertriebswege",
+                "Master Data Design: Stammdaten-Modell, Nummernkreise",
+                "Prozess-Konfiguration: Einstellungen pro Prozess",
+                "Erweiterungen: Custom Code, Enhancements, Add-Ons"
+              ]
+            },
+            {
+              label: "Clean Core Prinzip",
+              text: "Wir folgen dem Clean Core Prinzip: Der ERP-Kern bleibt sauber, Erweiterungen werden in definierten Extension Points oder Side-by-Side umgesetzt. Das sichert Update-Fähigkeit."
+            }
+          ],
+          highlight: "Ein sauberes Design heute spart Millionen bei zukünftigen Updates.",
+          deliverables: ["Solution Design Document", "Architektur-Blueprint", "Konfigurationskonzept", "Extension-Konzept"]
+        }
+      },
+      "integrationskonzept": {
+        title: "Integrationskonzept",
+        phase: "konzeption",
+        content: {
+          intro: `Das ERP ist das Herzstück Ihrer IT-Landschaft. Das Integrationskonzept definiert, wie das ERP mit allen anderen Systemen kommuniziert.`,
+          sections: [
+            {
+              label: "Integrationsbereiche",
+              items: [
+                "CRM-Integration: Kunden, Opportunities, Aufträge",
+                "E-Commerce: Webshop-Anbindung, Produktdaten",
+                "Produktion: MES, Maschinendaten, IoT",
+                "Logistik: WMS, TMS, Carrier-Anbindung",
+                "Finance: Banken, Zahlungsverkehr, Konsolidierung",
+                "HR: Personalwirtschaft, Zeiterfassung, Payroll"
+              ]
+            },
+            {
+              label: "Integrationsmuster",
+              text: "Wir definieren für jede Schnittstelle das optimale Integrationsmuster: Synchron vs. Asynchron, API vs. File, Point-to-Point vs. Middleware (iPaaS)."
+            }
+          ],
+          highlight: "Schlechte Integration ist der versteckte Kostentreiber vieler ERP-Projekte.",
+          deliverables: ["Integrations-Architektur", "Schnittstellen-Katalog", "API-Strategie", "Middleware-Empfehlung"]
+        }
+      },
+      "change-readiness": {
+        title: "Change Readiness",
+        phase: "konzeption",
+        content: {
+          intro: `Die beste Technik nützt nichts, wenn die Menschen nicht mitziehen. Change Readiness bereitet Ihre Organisation auf die Transformation vor.`,
+          sections: [
+            {
+              label: "Analyse-Elemente",
+              items: [
+                "Stakeholder-Mapping: Wer sind die Betroffenen?",
+                "Change Impact Assessment: Wie stark verändert sich die Arbeit?",
+                "Widerstandsanalyse: Wo ist mit Widerstand zu rechnen?",
+                "Kommunikationsbedarfe: Wer muss was wann wissen?",
+                "Trainingsbedarfe: Welche Skills fehlen?"
+              ]
+            },
+            {
+              label: "Change-Strategie",
+              text: "Basierend auf der Analyse entwickeln wir eine maßgeschneiderte Change-Strategie mit Kommunikationsplan, Stakeholder-Engagement und Trainingskonzept."
+            }
+          ],
+          highlight: "Technik-Projekte scheitern selten an der Technik. Sie scheitern an den Menschen.",
+          deliverables: ["Stakeholder-Map", "Change Impact Matrix", "Kommunikationsplan", "Trainingskonzept"]
+        }
+      },
+
+      // === PHASE 3: UMSETZUNG ===
+      "datenmigration": {
+        title: "Datenmigration",
+        phase: "umsetzung",
+        content: {
+          intro: `Die Datenmigration ist oft der kritischste Teil der Transformation. Wir begleiten die Migration von der Konzeption über Testläufe bis zur produktiven Übernahme.`,
+          sections: [
+            {
+              label: "Migrations-Phasen",
+              items: [
+                "Migrationskonzept: Strategie, Scope, Mapping",
+                "Datenbereinigung: Qualitätsprobleme vor Migration beheben",
+                "Entwicklung: ETL-Prozesse, Transformationsregeln",
+                "Testmigration: Iterative Tests mit Validierung",
+                "Produktivmigration: Cutover-Durchführung",
+                "Validierung: Vollständigkeit und Korrektheit prüfen"
+              ]
+            },
+            {
+              label: "Unsere Rolle",
+              text: "Wir erstellen das Migrationskonzept, begleiten die Datenbereinigung, validieren Testmigrationen und stellen sicher, dass die Produktivmigration vollständig und korrekt erfolgt."
+            }
+          ],
+          highlight: "Eine Migration kann man nicht rückgängig machen. Wir machen sie gleich richtig.",
+          deliverables: ["Migrationskonzept", "Mapping-Dokumentation", "Testmigrations-Reports", "Validierungsprotokolle"]
+        }
+      },
+      "testmanagement": {
+        title: "Testmanagement",
+        phase: "umsetzung",
+        content: {
+          intro: `Umfassendes Testing ist der Schlüssel zur Qualitätssicherung. Wir steuern die Teststrategie und koordinieren alle Testphasen bis zum UAT.`,
+          sections: [
+            {
+              label: "Testarten",
+              items: [
+                "Unit Tests: Einzelne Funktionen und Customizing",
+                "Integrationstests: Prozesse end-to-end",
+                "Regressionstests: Bestehende Funktionen nach Änderungen",
+                "Performance Tests: Last und Skalierbarkeit",
+                "User Acceptance Tests (UAT): Abnahme durch Fachbereiche"
+              ]
+            },
+            {
+              label: "Defect Management",
+              text: "Wir etablieren ein strukturiertes Defect Management mit Kategorisierung, Priorisierung und Tracking. Kritische Defects werden eskaliert und vor Go-Live gelöst."
+            }
+          ],
+          highlight: "Was nicht getestet wurde, funktioniert nicht. Wir testen gründlich.",
+          deliverables: ["Teststrategie", "Testfälle", "Test-Reports", "Defect-Tracking"]
+        }
+      },
+      "change-management": {
+        title: "Change Management",
+        phase: "umsetzung",
+        content: {
+          intro: `Change Management begleitet Ihre Mitarbeiter durch die Transformation. Wir setzen die Change-Strategie um und managen aktiv den Widerstand.`,
+          sections: [
+            {
+              label: "Aktivitäten",
+              items: [
+                "Stakeholder-Kommunikation: Regelmäßige Updates, Townhalls",
+                "Multiplikatoren-Netzwerk: Change Agents in den Fachbereichen",
+                "Quick Wins kommunizieren: Frühe Erfolge sichtbar machen",
+                "Widerstandsmanagement: Bedenken ernst nehmen, adressieren",
+                "Feedback-Schleifen: Kontinuierlich Rückmeldung einholen"
+              ]
+            },
+            {
+              label: "Adoption messen",
+              text: "Wir messen die User Adoption mit definierten KPIs und passen die Change-Maßnahmen bei Bedarf an. Das Ziel: Hohe Akzeptanz und produktive Nutzung ab Go-Live."
+            }
+          ],
+          highlight: "Change Management ist kein Nice-to-have. Es ist erfolgskritisch.",
+          deliverables: ["Kommunikationsmaterial", "Change-KPIs", "Feedback-Reports", "Adoption-Tracking"]
+        }
+      },
+      "training": {
+        title: "Training & Enablement",
+        phase: "umsetzung",
+        content: {
+          intro: `Gut geschulte Anwender sind produktiv ab Tag 1. Wir entwickeln und koordinieren das Schulungskonzept für alle Anwendergruppen.`,
+          sections: [
+            {
+              label: "Trainingskonzept",
+              items: [
+                "Zielgruppenanalyse: Wer braucht welches Training?",
+                "Curriculum-Design: Inhalte, Reihenfolge, Dauer",
+                "Train-the-Trainer: Interne Trainer ausbilden",
+                "Schulungsmaterial: Handbücher, Quick Guides, Videos",
+                "Schulungsdurchführung: Präsenz, Online, Blended"
+              ]
+            },
+            {
+              label: "Nachhaltigkeit",
+              text: "Training ist kein einmaliges Event. Wir etablieren eine Struktur für kontinuierliches Lernen und Onboarding neuer Mitarbeiter nach Go-Live."
+            }
+          ],
+          highlight: "In Schulung zu investieren zahlt sich 10x zurück. An Schulung zu sparen rächt sich.",
+          deliverables: ["Schulungskonzept", "Trainingsmaterial", "Train-the-Trainer", "Lernplattform-Setup"]
+        }
+      },
+      "qualitaetssicherung": {
+        title: "Qualitätssicherung (QA)",
+        phase: "umsetzung",
+        content: {
+          intro: `Als unabhängiger Partner sichern wir die Qualität der Implementierung. Wir kontrollieren den Systemintegrator und stellen sicher, dass vereinbarte Standards eingehalten werden.`,
+          sections: [
+            {
+              label: "QA-Aktivitäten",
+              items: [
+                "Unabhängige Reviews: Design, Code, Konfiguration",
+                "SI-Kontrolle: Liefert der Integrator wie vereinbart?",
+                "Quality Gates: Freigabekriterien definieren und prüfen",
+                "Eskalationsmanagement: Probleme früh adressieren",
+                "Claim Management: Ihre Interessen bei Abweichungen vertreten"
+              ]
+            },
+            {
+              label: "Warum unabhängige QA?",
+              text: "Der SI kontrolliert sich selbst nicht objektiv. Eine unabhängige QA deckt Probleme auf, die der SI nicht sieht oder nicht sehen will. Das verhindert böse Überraschungen beim Go-Live."
+            }
+          ],
+          highlight: "Unabhängige QA ist Ihre Versicherung gegen SI-Blindheit.",
+          deliverables: ["QA-Reports", "Review-Protokolle", "Mängellisten", "Abnahmeempfehlungen"]
+        }
+      },
+      "go-live": {
+        title: "Go-Live Management",
+        phase: "umsetzung",
+        content: {
+          intro: `Der Go-Live ist der kritischste Moment der Transformation. Wir planen den Cutover detailliert und stellen sicher, dass alle Fallback-Szenarien vorbereitet sind.`,
+          sections: [
+            {
+              label: "Cutover-Planung",
+              items: [
+                "Cutover-Plan: Minuten-genaue Planung aller Aktivitäten",
+                "Verantwortlichkeiten: Wer macht was wann?",
+                "Kommunikationsplan: Information an alle Stakeholder",
+                "Fallback-Szenarien: Was tun wenn etwas schiefgeht?",
+                "Go/No-Go Entscheidung: Klare Kriterien definiert"
+              ]
+            },
+            {
+              label: "Go-Live Checklisten",
+              text: "Wir arbeiten mit umfassenden Checklisten, die alle Voraussetzungen für einen erfolgreichen Go-Live abprüfen. Kein kritischer Punkt wird übersehen."
+            }
+          ],
+          highlight: "Ein Go-Live lässt sich nicht wiederholen. Wir bereiten ihn akribisch vor.",
+          deliverables: ["Cutover-Plan", "Go-Live Checklisten", "Fallback-Prozeduren", "Go/No-Go Protokoll"]
+        }
+      },
+
+      // === PHASE 4: BETRIEB ===
+      "hypercare": {
+        title: "Hypercare",
+        phase: "betrieb",
+        content: {
+          intro: `Die ersten 4-12 Wochen nach Go-Live sind kritisch. Hypercare bietet intensive Betreuung mit schneller Problemlösung und direktem User Support.`,
+          sections: [
+            {
+              label: "Hypercare-Leistungen",
+              items: [
+                "Erweiterter Support: Schnelle Reaktionszeiten, mehr Kapazität",
+                "Vor-Ort-Präsenz: Berater an kritischen Standorten",
+                "Floor Walking: Direkte Unterstützung der Anwender",
+                "Incident Management: Schnelle Problemanalyse und -lösung",
+                "Tägliche Stand-ups: Statusübersicht und Priorisierung"
+              ]
+            },
+            {
+              label: "Dauer",
+              text: "Die Hypercare-Phase dauert typischerweise 4-12 Wochen, abhängig von Projektgröße und Komplexität. Wir definieren klare Exit-Kriterien für den Übergang in den Regelbetrieb."
+            }
+          ],
+          highlight: "Die ersten Wochen entscheiden über die langfristige Akzeptanz. Wir sind da.",
+          deliverables: ["Hypercare-Reports", "Incident-Logs", "Known Issues Liste", "Handover an Support"]
+        }
+      },
+      "optimierung": {
+        title: "Kontinuierliche Optimierung",
+        phase: "betrieb",
+        content: {
+          intro: `Nach dem Go-Live ist vor der Optimierung. Wir helfen Ihnen, das volle Potenzial Ihres ERP-Systems auszuschöpfen und kontinuierlich zu verbessern.`,
+          sections: [
+            {
+              label: "Optimierungsbereiche",
+              items: [
+                "Prozessoptimierung: Basierend auf echten Nutzungsdaten",
+                "Feature-Aktivierung: Neue Funktionen nutzen",
+                "Automatisierung: Manuelle Tätigkeiten reduzieren",
+                "Reporting: Analytics und Dashboards verbessern",
+                "Performance: System-Tuning und Optimierung"
+              ]
+            },
+            {
+              label: "Quartalsreviews",
+              text: "Wir empfehlen quartalsweise Reviews, um Optimierungspotenziale systematisch zu identifizieren und einen priorisierten Backlog zu pflegen."
+            }
+          ],
+          highlight: "Ein ERP ist nie fertig. Kontinuierliche Optimierung maximiert den ROI.",
+          deliverables: ["Optimierungs-Backlog", "Nutzungsanalysen", "Feature-Empfehlungen", "Verbesserungs-Roadmap"]
+        }
+      },
+      "managed-services": {
+        title: "Managed Services",
+        phase: "betrieb",
+        content: {
+          intro: `Langfristiger Betrieb und Support für Ihr ERP-System. Wir übernehmen Application Management, Monitoring und Incident Management als laufenden Service.`,
+          sections: [
+            {
+              label: "Service-Umfang",
+              items: [
+                "Application Management: Wartung und Pflege des Systems",
+                "Incident Management: Störungsbehebung nach definierten SLAs",
+                "Change Management: Änderungen kontrolliert umsetzen",
+                "Monitoring: Proaktive Überwachung und Alerting",
+                "Release Management: Updates und Patches einspielen"
+              ]
+            },
+            {
+              label: "Service-Modelle",
+              text: "Wir bieten flexible Service-Modelle: Von punktueller Unterstützung bis zum Full-Service-Betrieb. Sie wählen den Umfang, der zu Ihnen passt."
+            }
+          ],
+          highlight: "Professioneller Betrieb sichert Stabilität und Verfügbarkeit. Wir kümmern uns.",
+          deliverables: ["SLA-Reports", "Incident-Statistiken", "Change-Logs", "Verfügbarkeitsberichte"]
+        }
+      },
+      "rollout-support": {
+        title: "Rollout Support",
+        phase: "betrieb",
+        content: {
+          intro: `Nach dem erfolgreichen Pilot folgt der Rollout auf weitere Standorte, Länder oder Gesellschaften. Wir unterstützen mit Template-Ansätzen und lokaler Anpassung.`,
+          sections: [
+            {
+              label: "Rollout-Ansatz",
+              items: [
+                "Template-Definition: Best Practices aus dem Pilot",
+                "Delta-Analyse: Was ist lokal anders?",
+                "Lokalisierung: Sprache, Recht, Steuern",
+                "Schulung: Train-the-Trainer vor Ort",
+                "Go-Live Begleitung: Support bei jedem Rollout"
+              ]
+            },
+            {
+              label: "Skalierung",
+              text: "Mit jedem Rollout wird der Prozess effizienter. Wir etablieren ein Rollout-Playbook, das kontinuierlich verbessert wird."
+            }
+          ],
+          highlight: "Ein gutes Template ist die Basis für effiziente Rollouts.",
+          deliverables: ["Rollout-Playbook", "Template-Dokumentation", "Lokalisierungs-Checklisten", "Lessons Learned"]
+        }
+      },
+
+      // === NUTZEN ===
+      "nutzen-cfo": {
+        title: "Nutzen für CFO & Finance",
+        phase: "nutzen",
+        content: {
+          intro: `Als CFO oder Finance-Verantwortlicher tragen Sie die Budgetverantwortung für die ERP-Transformation. Wir helfen Ihnen, das Investment abzusichern.`,
+          sections: [
+            {
+              label: "Ihr Nutzen",
+              items: [
+                "Realistischer Business Case mit TCO-Transparenz",
+                "Budgetsicherheit durch unabhängige QA",
+                "ROI-Beschleunigung durch Fit-to-Standard",
+                "Vermeidung teurer Customizations",
+                "Objektive Kontrolle des Systemintegrators"
+              ]
+            },
+            {
+              label: "Typische Einsparungen",
+              text: "Unsere Kunden berichten von 20-30% Zeitgewinn durch bessere Vorbereitung und 30-50% schnellerem ROI durch konsequenten Fit-to-Standard-Ansatz."
+            }
+          ],
+          highlight: "Wir schützen Ihr Budget und beschleunigen Ihren ROI.",
+          deliverables: ["Business Case", "TCO-Analyse", "Budget-Monitoring", "ROI-Tracking"]
+        }
+      },
+      "nutzen-cio": {
+        title: "Nutzen für CIO & IT",
+        phase: "nutzen",
+        content: {
+          intro: `Als CIO oder IT-Verantwortlicher tragen Sie die technische Verantwortung für die ERP-Transformation. Wir unterstützen Sie mit objektiver Expertise.`,
+          sections: [
+            {
+              label: "Ihr Nutzen",
+              items: [
+                "Objektive ERP-Evaluation ohne Vendor-Bias",
+                "Clean Core / Clean Architecture Beratung",
+                "Integrations- und API-Strategie",
+                "Technische Risikominimierung",
+                "Unabhängige Qualitätssicherung der Implementierung"
+              ]
+            },
+            {
+              label: "Multi-ERP Know-how",
+              text: "Wir kennen SAP, Oracle, Microsoft, Infor und andere aus zahlreichen Projekten. Dieses Cross-ERP-Wissen hilft, die richtige Entscheidung zu treffen."
+            }
+          ],
+          highlight: "Wir bringen Multi-ERP-Expertise ohne Vendor-Abhängigkeit.",
+          deliverables: ["ERP-Evaluation", "Architektur-Review", "QA-Reports", "Integrations-Design"]
+        }
+      },
+      "nutzen-business": {
+        title: "Nutzen für Business Owner",
+        phase: "nutzen",
+        content: {
+          intro: `Als Business Owner oder Fachbereichsleiter wollen Sie ein ERP, das Ihre Prozesse optimal unterstützt – nicht umgekehrt. Wir stellen das sicher.`,
+          sections: [
+            {
+              label: "Ihr Nutzen",
+              items: [
+                "Prozesse verstehen, dann Technologie wählen",
+                "Schnellere User Adoption",
+                "Weniger Anpassung an das System",
+                "Fokus auf Business Value",
+                "Ihre Anforderungen im Zentrum"
+              ]
+            },
+            {
+              label: "Einbindung der Fachbereiche",
+              text: "Wir binden Ihre Fachbereiche von Anfang an ein. Prozessworkshops, Gap-Analysen und UAT werden gemeinsam durchgeführt. Das erhöht Akzeptanz und Qualität."
+            }
+          ],
+          highlight: "Das ERP passt sich an Sie an – nicht Sie ans ERP.",
+          deliverables: ["Prozess-Modelle", "Gap-Analysen", "Schulungskonzept", "UAT-Support"]
+        }
+      },
+
+      // === BUCHUNG ===
+      "buchungsmodelle": {
+        title: "Buchungsmodelle",
+        phase: "buchung",
+        content: {
+          intro: `Flexibilität ist unser Prinzip. Sie wählen das Engagement-Modell, das zu Ihrer Situation passt. Kein Vendor Lock-in – flexibel rein, flexibel raus.`,
+          sections: [
+            {
+              label: "Phasen-Paket (empfohlen)",
+              text: "Komplette Phase als Paket mit Festpreis möglich. Ideal für: Klarer Scope, planbare Kosten, definierte Deliverables."
+            },
+            {
+              label: "Einzelbaustein",
+              text: "Einzelne Services aus dem Baukasten auf Time & Material Basis. Ideal für: Punktuelle Unterstützung, zweite Meinung, Quick Checks."
+            },
+            {
+              label: "End-to-End (Projektvertrag)",
+              text: "Begleitung über alle 4 Phasen hinweg. Ideal für: Maximale Kontinuität, durchgängiger Wissenstransfer, komplexe Programme."
+            }
+          ],
+          highlight: "Kein Vendor Lock-in: Flexibel rein, flexibel raus. Sie entscheiden über den Umfang.",
+          deliverables: ["Individuelles Angebot", "Klarer Scope", "Transparente Preise", "Flexible Laufzeit"]
+        }
+      },
+      "kontakt": {
+        title: "Starten Sie jetzt",
+        phase: "kontakt",
+        content: {
+          intro: `Der erste Schritt zu einer erfolgreichen ERP-Transformation ist ein Gespräch. Wir freuen uns auf Sie.`,
+          sections: [
+            {
+              label: "Ihr Weg zu uns",
+              items: [
+                "Schritt 1: Erstgespräch (60 Min. kostenlos)",
+                "Schritt 2: Readiness Check oder Workshop",
+                "Schritt 3: Projektstart binnen 2-4 Wochen"
+              ]
+            },
+            {
+              label: "Ihr Ansprechpartner",
+              text: "Marcel Wagner\nERP Transformation Advisory Lead\nmarcel.wagner@timetoact-group.com"
+            }
+          ],
+          highlight: "\"Wir verkaufen keine Lizenzen. Wir liefern Projekterfolg.\"",
+          deliverables: ["Kostenloses Erstgespräch", "Schneller Start", "Erfahrene Berater", "Messbare Ergebnisse"]
+        }
+      }
+    };
+
+    const topicLists = {
+      analyse: [
+        { id: "process-mapping", label: "Process Mapping" },
+        { id: "readiness-assessment", label: "Readiness Assessment" },
+        { id: "business-case", label: "Business Case & ROI" },
+        { id: "datenqualitaet", label: "Datenqualitäts-Analyse" },
+        { id: "erp-evaluation", label: "ERP-Evaluation" },
+        { id: "roadmap", label: "Transformations-Roadmap" }
+      ],
+      konzeption: [
+        { id: "soll-prozesse", label: "Soll-Prozess-Definition" },
+        { id: "gap-analyse", label: "Gap-Analyse" },
+        { id: "loesungsdesign", label: "Lösungsdesign" },
+        { id: "integrationskonzept", label: "Integrationskonzept" },
+        { id: "change-readiness", label: "Change Readiness" }
+      ],
+      umsetzung: [
+        { id: "datenmigration", label: "Datenmigration" },
+        { id: "testmanagement", label: "Testmanagement" },
+        { id: "change-management", label: "Change Management" },
+        { id: "training", label: "Training & Enablement" },
+        { id: "qualitaetssicherung", label: "Qualitätssicherung (QA)" },
+        { id: "go-live", label: "Go-Live Management" }
+      ],
+      betrieb: [
+        { id: "hypercare", label: "Hypercare" },
+        { id: "optimierung", label: "Kontinuierliche Optimierung" },
+        { id: "managed-services", label: "Managed Services" },
+        { id: "rollout-support", label: "Rollout Support" }
+      ],
+      info: [
+        { id: "warum-advisory", label: "Warum ERP Advisory?" },
+        { id: "interessenkonflikte", label: "Interessenkonflikte der SIs" },
+        { id: "vorteile", label: "Unsere vier Vorteile" },
+        { id: "erp-systeme", label: "Erst Prozesse, dann ERP" }
+      ],
+      nutzen: [
+        { id: "nutzen-cfo", label: "Nutzen für CFO & Finance" },
+        { id: "nutzen-cio", label: "Nutzen für CIO & IT" },
+        { id: "nutzen-business", label: "Nutzen für Business Owner" }
+      ],
+      buchung: [
+        { id: "buchungsmodelle", label: "Buchungsmodelle" },
+        { id: "kontakt", label: "Starten Sie jetzt" }
+      ]
+    };
+
+    const viewTitles = {
+      analyse: "Phase 1: Analyse",
+      konzeption: "Phase 2: Konzeption",
+      umsetzung: "Phase 3: Umsetzung",
+      betrieb: "Phase 4: Betrieb",
+      info: "Warum ERP Transformation Advisory?",
+      nutzen: "Nutzen nach Zielgruppe",
+      buchung: "Buchung & Kontakt"
+    };
+
+    let currentView = 'home';
+    let selectedTopic = null;
+    let previousView = null;
+
+    function render() {
+      const app = document.getElementById('app');
+      if (selectedTopic && detailContent[selectedTopic]) {
+        app.innerHTML = renderDetailView();
+      } else if (currentView !== 'home') {
+        app.innerHTML = renderTopicGrid();
+      } else {
+        app.innerHTML = renderHome();
+      }
+    }
+
+    function renderHome() {
+      return `
+        <div class="christmas-banner">🎄 Frohe Weihnachten und ein erfolgreiches Jahr 2026! 🎄</div>
+        
+        <div class="header fade-in">
+          <div class="logo-container">
+            <div class="logo-text">We Drive Digital Innovation & Operational Excellence</div>
+            <div class="logo-main">TIMETOACT<span>GROUP</span></div>
+          </div>
+          <div class="tagline">
+            ERP Transformation Advisory
+            <div class="tagline-highlight">
+              <span>We Care.</span>
+              <span>We Drive.</span>
+              <span>We Deliver.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="container">
+          <div class="stats-banner fade-in">
+            <div class="stat-box">
+              <div class="stat-number">20-30%</div>
+              <div class="stat-label">Zeitgewinn durch bessere Vorbereitung</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-number">>95%</div>
+              <div class="stat-label">Kundenzufriedenheit (NPS)</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-number">30-50%</div>
+              <div class="stat-label">Schnellerer ROI</div>
+            </div>
+          </div>
+
+          <div class="main-card fade-in">
+            <div class="card-title">ERP Transformation Cockpit</div>
+            <div class="card-subtitle">Wir mappen Ihre Prozesse zum passenden ERP – herstellerneutral, senior-only, modular</div>
+
+            <div class="phase-grid">
+              <button class="phase-button analyse" onclick="navigate('analyse')">
+                <div class="phase-number">1</div>
+                <div class="phase-title">ANALYSE</div>
+                <div class="phase-count">6 Services</div>
+              </button>
+              <button class="phase-button konzeption" onclick="navigate('konzeption')">
+                <div class="phase-number">2</div>
+                <div class="phase-title">KONZEPTION</div>
+                <div class="phase-count">5 Services</div>
+              </button>
+              <button class="phase-button umsetzung" onclick="navigate('umsetzung')">
+                <div class="phase-number">3</div>
+                <div class="phase-title">UMSETZUNG</div>
+                <div class="phase-count">6 Services</div>
+              </button>
+              <button class="phase-button betrieb" onclick="navigate('betrieb')">
+                <div class="phase-number">4</div>
+                <div class="phase-title">BETRIEB</div>
+                <div class="phase-count">4 Services</div>
+              </button>
+            </div>
+
+            <div class="section-title">Weitere Informationen</div>
+
+            <div class="info-grid">
+              <button class="info-button" onclick="navigate('info')">
+                <div class="info-button-title">Warum Advisory?</div>
+                <div class="info-button-desc">Interessenkonflikte, unsere Vorteile</div>
+              </button>
+              <button class="info-button" onclick="navigate('nutzen')">
+                <div class="info-button-title">Nutzen</div>
+                <div class="info-button-desc">CFO, CIO, Business Owner</div>
+              </button>
+              <button class="info-button" onclick="navigate('buchung')">
+                <div class="info-button-title">Buchung</div>
+                <div class="info-button-desc">Modelle & Kontakt</div>
+              </button>
+            </div>
+          </div>
+
+          <div class="footer">
+            <div class="footer-tagline">
+              <span>We Care.</span> <span>We Drive.</span> <span>We Deliver.</span>
+            </div>
+            <div>© 2025 TIMETOACT GROUP · ERP-unabhängig: SAP · Oracle · Microsoft · Infor · IFS · weitere</div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderTopicGrid() {
+      const topics = topicLists[currentView] || [];
+      const title = viewTitles[currentView] || currentView;
+      const phaseClass = currentView;
+      
+      const topicButtons = topics.map(t => 
+        `<button class="topic-button ${phaseClass}" onclick="selectTopic('${t.id}')">${t.label}</button>`
+      ).join('');
+
+      return `
+        <div class="page-content">
+          <div class="page-container fade-in">
+            <div class="page-header ${phaseClass}">
+              <h1>${title}</h1>
+              <div class="page-header-sub">${topics.length} Services verfügbar</div>
+            </div>
+            <div class="topic-grid">${topicButtons}</div>
+            <button class="back-button" onclick="goHome()">← Zurück zum Cockpit</button>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderDetailView() {
+      const item = detailContent[selectedTopic];
+      const content = item.content;
+      const backTitle = viewTitles[previousView] || 'Übersicht';
+      
+      let sectionsHtml = '';
+      if (content.sections) {
+        content.sections.forEach(section => {
+          sectionsHtml += `<div class="detail-section">`;
+          sectionsHtml += `<div class="detail-label">${section.label}</div>`;
+          if (section.items) {
+            sectionsHtml += `<ul class="detail-list">`;
+            section.items.forEach(item => {
+              sectionsHtml += `<li>${item}</li>`;
+            });
+            sectionsHtml += `</ul>`;
+          }
+          if (section.text) {
+            sectionsHtml += `<div class="detail-text">${section.text}</div>`;
+          }
+          sectionsHtml += `</div>`;
+        });
+      }
+
+      let deliverablesHtml = '';
+      if (content.deliverables && content.deliverables.length > 0) {
+        deliverablesHtml = `
+          <div class="deliverable-box">
+            <div class="deliverable-title">Deliverables</div>
+            <div class="detail-text">${content.deliverables.join(' · ')}</div>
+          </div>
+        `;
+      }
+
+      let highlightHtml = '';
+      if (content.highlight) {
+        highlightHtml = `
+          <div class="highlight-box">
+            <p>${content.highlight}</p>
+          </div>
+        `;
+      }
+
+      return `
+        <div class="page-content">
+          <div class="page-container fade-in">
+            <div class="breadcrumb">
+              <span class="breadcrumb-link" onclick="goHome()">Cockpit</span>
+              <span>›</span>
+              <span class="breadcrumb-link" onclick="goBack()">${backTitle}</span>
+              <span>›</span>
+              <span>${item.title}</span>
+            </div>
+            <div class="detail-card">
+              <h1 class="detail-header">${item.title}</h1>
+              <div class="detail-section">
+                <div class="detail-text">${content.intro}</div>
+              </div>
+              ${sectionsHtml}
+              ${highlightHtml}
+              ${deliverablesHtml}
+            </div>
+            <button class="back-button" onclick="goBack()">← Zurück</button>
+          </div>
+        </div>
+      `;
+    }
+
+    function navigate(view) {
+      previousView = currentView;
+      currentView = view;
+      selectedTopic = null;
+      render();
+      window.scrollTo(0, 0);
+    }
+
+    function selectTopic(topicId) {
+      previousView = currentView;
+      selectedTopic = topicId;
+      render();
+      window.scrollTo(0, 0);
+    }
+
+    function goHome() {
+      currentView = 'home';
+      selectedTopic = null;
+      previousView = null;
+      render();
+      window.scrollTo(0, 0);
+    }
+
+    function goBack() {
+      if (selectedTopic) {
+        selectedTopic = null;
+        render();
+      } else {
+        goHome();
+      }
+      window.scrollTo(0, 0);
+    }
+
+    render();
+  </script>
+</body>
+</html>
